@@ -1,0 +1,14 @@
+# PatchCore baseline 실행 환경
+# Colab T4 (Python 3.12) 기준. torch/torchvision은 Colab 기본 버전 사용 가정.
+torch>=2.0
+torchvision>=0.15
+faiss-cpu>=1.7.0
+click
+matplotlib
+pillow
+pretrainedmodels
+scikit-image
+scikit-learn
+scipy
+tqdm
+numpy

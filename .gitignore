@@ -1,0 +1,42 @@
+# 모델 가중치
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+
+# 데이터셋 / 큰 파일
+data/
+datasets/
+*.h5
+*.npy
+*.npz
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# 로그 / 실행 산출물
+*.log
+logs/
+runs/
+wandb/
+outputs/
+checkpoints/
+
+# 환경
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+node_modules/
+
+# 시스템
+.DS_Store
+Thumbs.db
+
+# 비밀
+*.env
+.env.*
