@@ -4,7 +4,7 @@
 - 미팅 자료: [meetings/2026-W20_brief.md](meetings/2026-W20_brief.md)
 
 ### 전주 계획 달성도
-- [x] W19 피드백 반영 — 다음 주 우선순위
+- [o] W19 피드백 반영 — 다음 주 우선순위
 - [x] method1: PatchCore MVTec AD 전 카테고리(15개) 재현
 
 ### 이전 미팅 결정 사항 (5/7)

@@ -2,7 +2,7 @@
 
 | # | 폴더 | 논문 | 상태 |
 |---|------|------|------|
-| 1 | [method1_patchcore](method1_patchcore/) | Roth et al., 2022, *Towards Total Recall in Industrial Anomaly Detection* (CVPR 2022, PatchCore) | baseline 재현 (MVTec AD: bottle, leather) |
+| 1 | [method1_patchcore](method1_patchcore/) | Roth et al., 2022, *Towards Total Recall in Industrial Anomaly Detection* (CVPR 2022, PatchCore) | baseline 재현 (MVTec AD: bottle, leather, cable, pill) |
 
 ## 진행 상황 요약
 
