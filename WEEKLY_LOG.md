@@ -12,7 +12,13 @@
 ### 이전 미팅 결정 사항 (5/7)
 - bottle/leather 재현 보고, 미팅 직후 피드백 수신 (개선 필요 / 다음 주 우선순위는 W20 brief에 반영)
 
-### 다음 미팅까지의 계획
+### 다음 미팅까지의 계획 (측정 가능한 단위로)
+- **성능 하락 원인 분석 및 검증 실험 수행**
+  - 원인 분석 리포트 작성 완료: `method1_patchcore/markdown/repro_failure_analysis.md`
+  - Pill/Metal_nut 대상 검증 실험 수행: `method1_patchcore/source/run_validation.sh` (신규 작성 예정)
+  - 실험 결과 도출 및 비교 분석: `method1_patchcore/source/results/val_*.csv` 및 분석 노트 작성
+- **차기 주차 미팅 자료 준비**
+  - `meetings/2026-W21_brief.md` 초안 작성 및 push
 
 ---
 
