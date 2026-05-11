@@ -5,9 +5,9 @@
 
 ### 전주 계획 달성도
 - [o] W19 피드백 반영 — 다음 주 우선순위
-- [ ] method1: PatchCore MVTec AD 전 카테고리(15개) 재현 (14/15 완료)
-  - 완료: bottle, leather, cable, capsule, carpet, hazelnut, metal_nut, pill, transistor, grid, screw, tile, wood, toothbrush
-  - 대기: zipper
+- [o] method1: PatchCore MVTec AD 전 카테고리(15개) 재현 (15/15 완료)
+  - 완료: bottle, leather, cable, capsule, carpet, hazelnut, metal_nut, pill, transistor, grid, screw, tile, wood, toothbrush, zipper
+  - 대기: 없음 (전 카테고리 재현 완료)
 
 ### 이전 미팅 결정 사항 (5/7)
 - bottle/leather 재현 보고, 미팅 직후 피드백 수신 (개선 필요 / 다음 주 우선순위는 W20 brief에 반영)
