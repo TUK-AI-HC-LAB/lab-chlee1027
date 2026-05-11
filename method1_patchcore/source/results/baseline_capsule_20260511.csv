@@ -1,0 +1,2 @@
+date,category,backbone,layers,coreset_pct,patchsize,seed,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,paper_instance_auroc,paper_pixel_auroc,environment,notes
+2026-05-11,capsule,wideresnet50,layer2+layer3,0.10,3,0,0.979,0.990,0.987,0.981,0.990,Colab T4 / torch 2.10.0+cu128 / faiss-cpu 1.13.2,baseline reproduction (PatchCore-10%)
