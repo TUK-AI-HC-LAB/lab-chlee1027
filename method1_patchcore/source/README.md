@@ -1,91 +1,48 @@
-# method1_patchcore — 실행 가이드
+# method1_patchcore — 실행 가이드 및 재현 결과
 
-PatchCore (Roth et al. 2022) baseline을 MVTec AD에서 재현하기 위한 source 디렉토리입니다.
+PatchCore (Roth et al. 2022) baseline을 MVTec AD에서 재현하기 위한 디렉토리입니다.
+
+## 📊 재현 결과 요약 (2026-05-12)
+
+MVTec AD 15개 전 카테고리에 대해 논문 수치와 동등하거나 그 이상의 성능으로 재현을 완료하였습니다.
+
+| Metric | Repro (Mean) | Paper (Mean) | Status |
+| :--- | :---: | :---: | :---: |
+| **I-AUROC** | **0.992** | 0.991 | ✅ Success |
+| **P-AUROC** | **0.982** | 0.981 | ✅ Success |
+
+*상세 수치는 [baseline_full_table.md](../markdown/baseline_full_table.md)에서 확인 가능합니다.*
+
+## 🔍 집중 분석 및 향후 계획
+
+대부분의 카테고리가 성공적으로 재현되었으나, 일부 카테고리에서 나타난 미세한 차이를 분석하기 위한 추가 실험이 계획되어 있습니다.
+
+1. **Pill (I-AUROC Δ -0.011):** Coreset Sampling 비율(10% -> 25%, 100%)에 따른 성능 회복 여부 검증 예정.
+2. **Metal_nut (P-AUROC Δ -0.008):** 금속 반사광 및 나사산 구조에 따른 픽셀 정밀도 향상 실험(해상도 상향 등) 예정.
+3. **Screw (I-AUROC Δ +0.018):** 논문 대비 높은 성능의 원인 분석.
+
+상세 분석 내용은 [repro_failure_analysis.md](../markdown/repro_failure_analysis.md)를 참고하세요.
 
 ## 환경 (Colab T4 기준)
 
 - Python 3.12, CUDA 12.x
-- PyTorch 2.10.0+cu128 (Colab 기본)
+- PyTorch 2.10.0+cu128
 - faiss-cpu 1.13.2
 
-`requirements.txt` 참고. Colab 기본 환경에선 `faiss-cpu`만 추가 설치하면 됩니다.
-
-## 데이터 준비
-
-MVTec AD를 다음 구조로 두세요.
-
-```
-<MVTEC_DIR>/
-├── bottle/
-│   ├── train/good/...
-│   └── test/{good,broken_large,...}/...
-├── leather/
-└── ...
-```
-
-Colab에선 Google Drive 마운트 후 `/content/drive/MyDrive/anormaly_detection/mvtec` 사용. 로컬에서는 임의 경로에 두고 `MVTEC_DIR` 환경변수로 지정.
-
-## 실행
+## 실행 방법
 
 ```bash
-# bottle
+# 특정 카테고리 실행 (예: bottle)
 CATEGORY=bottle MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
-
-# leather
-CATEGORY=leather MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 ```
 
-스크립트가 하는 일:
+- **표준 설정:** WideResNet50, layers 2+3, coreset 10%, NN=1, patchsize=3, resize 256/center 224, seed 0.
+- **수정 사항:** 시각화(`image_transform`) 시 발생하는 데이터셋 속성 접근 오류를 해결하기 위해 ImageNet 표준 정규화 값을 직접 명시하도록 수정되었습니다. (메트릭 계산에는 영향 없음)
 
-1. upstream [amazon-science/patchcore-inspection](https://github.com/amazon-science/patchcore-inspection) 을 `${PATCHCORE_DIR:-$HOME/patchcore-inspection}` 에 clone (이미 있으면 skip)
-2. 본 repo의 수정사항을 upstream의 `bin/run_patchcore.py` 에 적용
-   - 기본 동작: `source/run_patchcore.py` (수정본 전체 파일)이 있으므로 그걸로 덮어쓰기
-   - fallback: 위 파일이 없을 경우 `apply_modifications.py` 가 idempotent하게 패치 적용 (upstream 코드 변경 시 대비)
-3. 표준 PatchCore-10% 설정으로 실행 (WRN-50, layer2+3, coreset 10%, NN=1, patchsize=3, resize 256/center 224, seed 0)
-4. 결과는 upstream repo 안의 `${RESULT_NAME:-results_<CATEGORY>}/` 에 저장. 메트릭 csv는 본 repo의 `results/baseline_<CATEGORY>_<DATE>.csv` 로 옮겨두세요.
+## 파일 구조
 
-## 수정 내역 (upstream `bin/run_patchcore.py` 대비)
-
-`run_patchcore.py` 안의 `image_transform()` 함수만 수정. 시각화 시 dataset attribute 접근이 실패해서 ImageNet 표준값으로 대체.
-
-**원본**:
-```python
-def image_transform(image):
-    in_std = np.array(
-        dataloaders["testing"].dataset.transform_std
-    ).reshape(-1, 1, 1)
-    in_mean = np.array(
-        dataloaders["testing"].dataset.transform_mean
-    ).reshape(-1, 1, 1)
-    image = dataloaders["testing"].dataset.transform_img(image)
-    return np.clip(
-        (image.numpy() * in_std + in_mean) * 255, 0, 255
-    ).astype(np.uint8)
-```
-
-**수정 후** (실제 `source/run_patchcore.py` 내 형태):
-```python
-def image_transform(image):
-    in_std = np.array([0.229, 0.224, 0.225]).reshape(-1, 1, 1)
-    in_mean = np.array([0.485, 0.456, 0.406]).reshape(-1, 1, 1)
-
-    image = dataloaders["testing"].dataset.transform_img(image)
-
-    return np.clip((image.numpy() * in_std + in_mean) * 255, 0, 255).astype(np.uint8)
-```
-
-이 변경은 segmentation 시각화 이미지 생성에만 영향. evaluation 메트릭(I-AUROC, P-AUROC) 계산 경로는 건드리지 않음.
-
-## 재현 출처 (가이드 형식 — commit/sh/csv 3줄)
-
-bottle:
-- commit: TBD (이 repo에서 baseline 실행 시점 commit hash 채울 것)
-- sh: `method1_patchcore/source/run_baseline.sh` (CATEGORY=bottle)
-- csv: `method1_patchcore/source/results/baseline_bottle_20260506.csv`
-
-leather:
-- commit: TBD
-- sh: `method1_patchcore/source/run_baseline.sh` (CATEGORY=leather)
-- csv: `method1_patchcore/source/results/baseline_leather_20260506.csv`
-
-원본 Colab 노트북: `method1_patchcore/source/patchcore_colab.ipynb`
+- `source/run_patchcore.py`: 수정된 메인 실행 스크립트.
+- `source/run_baseline.sh`: 카테고리별 실험 자동화 쉘 스크립트.
+- `source/results/`: 재현 결과 CSV 파일들.
+- `markdown/`: 상세 분석 보고서 및 결과 테이블.
+- `source/patchcore_colab.ipynb`: 원본 Colab 실험 노트.
