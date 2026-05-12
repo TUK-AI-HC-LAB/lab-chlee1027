@@ -1,3 +1,6 @@
 experiment,variable,value,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,note
 Baseline,default,224,0.999,0.983,0.981,Original resolution
 Resolution Study,imagesize,324,1.000,0.985,0.983,Reached I-AUROC 1.0; P-AUROC improved
+Backbone Features,layers,layer1+2+3,0.996,0.987,0.985,Best P-AUROC; I-AUROC slightly dropped
+Patch Parameters,patchsize,2,0.999,0.971,0.964,Significant drop in P-AUROC
+Coreset Study,coreset_pct,0.25,0.999,0.983,0.979,No improvement over baseline
