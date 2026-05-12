@@ -1,0 +1,3 @@
+experiment,variable,value,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,note
+Baseline,default,224,0.999,0.983,0.981,Original resolution
+Resolution Study,imagesize,324,1.000,0.985,0.983,Reached I-AUROC 1.0; P-AUROC improved
