@@ -8,5 +8,6 @@ Seed Study,seed,2,0.963,0.978,0.976,Seed sensitivity
 Preprocessing,interpolation,BICUBIC,0.967,0.977,0.975,No significant change
 Preprocessing,antialias,False,0.967,0.978,0.976,No change
 Backbone Features,layers,layer1+2+3,0.956,0.981,0.979,I-AUROC dropped; P-AUROC improved
+Backbone Features,layers,layer2,0.917,0.969,0.967,Significant drop; Layer 3 is essential
 Patch Parameters,patchsize,2,0.968,0.979,0.977,Marginal improvement in all metrics
 Anomaly Scorer,nn_count,5,0.968,0.979,0.977,Slight stability improvement
