@@ -57,12 +57,29 @@ CATEGORY=bottle MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 
 `run_patchcore.py`의 시각화 함수(`image_transform`)에서 데이터셋 속성 접근 오류를 해결하기 위해 ImageNet 표준 정규화 값을 직접 명시하도록 수정되었습니다. 이 변경은 메트릭(AUROC) 계산에는 영향을 주지 않습니다.
 
-**수정 코드:**
+**원본 (Upstream)**:
+```python
+def image_transform(image):
+    in_std = np.array(
+        dataloaders["testing"].dataset.transform_std
+    ).reshape(-1, 1, 1)
+    in_mean = np.array(
+        dataloaders["testing"].dataset.transform_mean
+    ).reshape(-1, 1, 1)
+    image = dataloaders["testing"].dataset.transform_img(image)
+    return np.clip(
+        (image.numpy() * in_std + in_mean) * 255, 0, 255
+    ).astype(np.uint8)
+```
+
+**수정 후 (Actual implementation)**:
 ```python
 def image_transform(image):
     in_std = np.array([0.229, 0.224, 0.225]).reshape(-1, 1, 1)
     in_mean = np.array([0.485, 0.456, 0.406]).reshape(-1, 1, 1)
+
     image = dataloaders["testing"].dataset.transform_img(image)
+
     return np.clip((image.numpy() * in_std + in_mean) * 255, 0, 255).astype(np.uint8)
 ```
 
