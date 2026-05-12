@@ -1,5 +1,0 @@
-coreset_ratio,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc
-0.01,0.980,0.976,0.974
-0.10,0.967,0.978,0.976
-0.25,0.967,0.976,0.974
-0.99,0.963,0.971,0.969
