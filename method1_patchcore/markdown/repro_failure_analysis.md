@@ -36,6 +36,9 @@ MVTec AD 데이터셋의 15개 카테고리에 대한 PatchCore 알고리즘 재
 - **특이점:** 금속 나사산(threads)의 복잡한 기하학적 구조가 픽셀 단위 탐지를 방해함.
 
 ### 3.2. 실험 결과 및 기술적 해석
+- commit: `7355e05`
+- sh: `method1_patchcore/source/run_validation.sh`
+- csv: `method1_patchcore/source/results/val_metal_nut_total_study.csv`
 
 | 실험 ID | 변수 (Variable) | 설정값 (Value) | I-AUROC | P-AUROC | 기술적 분석 및 인사이트 |
 | :--- | :--- | :--- | :---: | :---: | :--- |

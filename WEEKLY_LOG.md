@@ -4,21 +4,22 @@
 - 미팅 자료: [meetings/2026-W20_brief.md](meetings/2026-W20_brief.md)
 
 ### 전주 계획 달성도
-- [o] W19 피드백 반영 — 다음 주 우선순위
-- [o] method1: PatchCore MVTec AD 전 카테고리(15개) 재현 (15/15 완료)
-  - 완료: bottle, leather, cable, capsule, carpet, hazelnut, metal_nut, pill, transistor, grid, screw, tile, wood, toothbrush, zipper
-  - 대기: 없음 (전 카테고리 재현 완료)
+- [x] W19 피드백 반영 완료
+- [x] method1: PatchCore MVTec AD 전 카테고리(15개) 재현 (15/15 완료)
+- [x] 성능 하락 원인 분석 및 검증 실험 수행
+  - [x] Pill: 샘플링 비율/시드/레이어 실험 완료 (`method1_patchcore/source/results/val_pill_total_study.csv`)
+  - [x] Metal_nut: 해상도/레이어 실험 완료 (`method1_patchcore/source/results/val_metal_nut_total_study.csv`)
+  - [x] 검증 자동화 스크립트 작성 (`method1_patchcore/source/run_validation.sh`)
+- [x] 차기 주차 미팅 자료 준비 (`meetings/2026-W21_brief.md`)
 
 ### 이전 미팅 결정 사항 (5/7)
-- bottle/leather 재현 보고, 미팅 직후 피드백 수신 (개선 필요 / 다음 주 우선순위는 W20 brief에 반영)
+- Pill/Metal_nut 하락 원인 규명 집중
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **성능 하락 원인 분석 및 검증 실험 수행**
-  - 원인 분석 리포트 작성 완료: `method1_patchcore/markdown/repro_failure_analysis.md`
-  - Pill/Metal_nut 대상 검증 실험 수행: `method1_patchcore/source/run_validation.sh` (신규 작성 예정)
-  - 실험 결과 도출 및 비교 분석: `method1_patchcore/source/results/val_*.csv` 및 분석 노트 작성
-- **차기 주차 미팅 자료 준비**
-  - `meetings/2026-W21_brief.md` 초안 작성 및 push
+- **PatchCore 재현 프로젝트 마무리 및 보고**
+  - 실험 데이터 최종 검토 및 `repro_failure_analysis.md` 완결
+- **신규 Method 조사**
+  - PatchCore 이후 다룰 차세대 이상탐지 알고리즘(예: EfficientAD 또는 FastFlow) 후보 2종 선정 및 초안 작성
 
 ---
 
