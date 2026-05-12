@@ -80,7 +80,11 @@ def image_transform(image):
 
     image = dataloaders["testing"].dataset.transform_img(image)
 
-    return np.clip((image.numpy() * in_std + in_mean) * 255, 0, 255).astype(np.uint8)
+    # detach().cpu()를 추가하여 GPU 환경에서도 안전하게 numpy 변환 가능하도록 수정
+    return np.clip((image.detach().cpu().numpy() * in_std + in_mean) * 255, 0, 255).astype(np.uint8)
+
+def mask_transform(mask):
+    return dataloaders["testing"].dataset.transform_mask(mask).detach().cpu().numpy()
 ```
 
 ## 📂 파일 구조
