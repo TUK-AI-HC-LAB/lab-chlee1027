@@ -1,5 +1,24 @@
 # Weekly Log
 
+## 2026-W21 (5/15 ~ 5/21, 5/21 미팅)
+- 미팅 자료: [meetings/2026-W21_brief.md](meetings/2026-W21_brief.md)
+
+### 전주 계획 달성도
+- [ ] PatchCore 프로젝트 최종 문서화 점검 (진행 중)
+- [ ] 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완 (진행 중)
+
+### 이전 미팅 결정 사항 (5/14)
+- README 및 문서의 '계획 중' 상태를 '완료'로 최신화
+- PyTorch/CUDA 버전 차이에 따른 재현성 확보를 위한 기술적 계획 수립 (Docker 등)
+- `pill`, `metal_nut` 분석 보고서 최종 완결
+
+### 다음 미팅까지의 계획 (측정 가능한 단위로)
+- **PatchCore 프로젝트 최종 마무리**
+  - 모든 markdown 문서(분석, 표, 요약)의 링크 및 경로 최종 점검
+  - `environment_reproducibility_plan.md`의 기술적 실무 적용 가능성 초안 작성
+
+---
+
 ## 2026-W20 (5/8 ~ 5/14, 5/14 미팅)
 - 미팅 자료: [meetings/2026-W20_brief.md](meetings/2026-W20_brief.md)
 
