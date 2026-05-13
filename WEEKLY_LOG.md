@@ -12,14 +12,15 @@
   - [x] 검증 자동화 스크립트 작성 (`method1_patchcore/source/run_validation.sh`)
 - [x] 차기 주차 미팅 자료 준비 (`meetings/2026-W21_brief.md`)
 
-### 이전 미팅 결정 사항 (5/7)
-- Pill/Metal_nut 하락 원인 규명 집중
+### 이전 미팅 결정 사항 (5/14)
+- README 및 문서의 '계획 중' 상태를 '완료'로 최신화
+- PyTorch/CUDA 버전 차이에 따른 재현성 확보를 위한 기술적 계획 수립 (Docker 등)
+- `pill`, `metal_nut` 분석 보고서 최종 완결
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **PatchCore 재현 프로젝트 마무리 및 보고**
-  - 실험 데이터 최종 검토 및 `repro_failure_analysis.md` 완결
-- **신규 Method 조사**
-  - PatchCore 이후 다룰 차세대 이상탐지 알고리즘(예: EfficientAD 또는 FastFlow) 후보 2종 선정 및 초안 작성
+- **PatchCore 프로젝트 최종 문서화 점검**
+  - 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완
+
 
 ---
 
