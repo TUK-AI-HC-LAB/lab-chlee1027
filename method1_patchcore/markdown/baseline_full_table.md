@@ -1,5 +1,9 @@
 # PatchCore Baseline Reproduction Results (MVTec AD)
 
+- commit: `4592d62`
+- sh: `method1_patchcore/source/run_baseline.sh`
+- csv: `method1_patchcore/source/results/ (15 categories)`
+
 > **Environment:** Colab T4 / Python 3.12 / torch 2.10.0+cu128
 > **Settings:** PatchCore-10% (WideResNet50, layers 2+3, coreset 0.1, patchsize 3)
 > **Paper:** Roth et al. 2022 (PatchCore)

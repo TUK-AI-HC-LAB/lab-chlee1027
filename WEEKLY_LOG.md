@@ -16,6 +16,9 @@
 - **PatchCore 프로젝트 최종 마무리**
   - 모든 markdown 문서(분석, 표, 요약)의 링크 및 경로 최종 점검
   - `environment_reproducibility_plan.md`의 기술적 실무 적용 가능성 초안 작성
+- **SimpleNet 확장 준비**
+  - `method2_simplenet/` 폴더 구조 생성 및 논문(`paper/`) 업로드
+  - 논문 요약(`markdown/simplenet_summary.md`) 초안 작성
 
 ---
 
