@@ -45,6 +45,7 @@ python3 main.py \
   --log_project MVTecAD_Results \
   --results_path results \
   --run_name toothbrush_visual \
+  --save_segmentation_images \
   net \
     -b wideresnet50 \
     -le layer2 -le layer3 \
