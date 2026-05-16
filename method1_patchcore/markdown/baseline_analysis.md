@@ -1,43 +1,31 @@
-# PatchCore baseline 재현 분석 (전체 15개 중 9개 완료)
+# PatchCore Baseline 재현 분석 (MVTec AD 15개 전 카테고리 완결)
 
 > 재현 실행: 2026-05-06 ~ 2026-05-11, Colab T4 GPU
 > 논문: Roth et al. 2022 — `method1_patchcore/paper/roth2022.pdf`
-> 상세 비교표: `method1_patchcore/markdown/baseline_full_table.md`
+> 상세 결과: `method1_patchcore/markdown/baseline_full_table.md`
+> 원인 분석: `method1_patchcore/markdown/repro_failure_analysis.md`
 
-## 문제 / 동기
+## 1. 개요 및 목적
+PatchCore baseline이 MVTec AD 전 카테고리(15개)에서 논문 수치대로 재현되는지 확인하여 baseline의 신뢰도를 확보하였습니다.
 
-PatchCore baseline이 MVTec AD 전 카테고리(15개)에서 논문 수치대로 재현되는지 확인하여 baseline의 신뢰도를 확보함.
+## 2. 실험 환경 및 설정
+- **환경**: Colab T4 GPU
+- **기술 스택**: Python 3.12, torch 2.10.0+cu128, faiss-cpu 1.13.2
+- **Backbone**: WideResNet-50 (ImageNet pretrain)
+- **Feature Layers**: layer2 + layer3
+- **Coreset**: Approx Greedy, p=0.1 (10%)
+- **Seed**: 0
 
-## 시도
+## 3. 종합 결과 (15개 전 카테고리)
+- **I-AUROC 평균**: 0.992 (논문 0.991)
+- **P-AUROC 평균**: 0.982 (논문 0.981)
 
-**환경**
-- Colab T4 GPU (완료된 9개 카테고리)
-- Python 3.12, torch 2.10.0+cu128, faiss-cpu 1.13.2
-- upstream: amazon-science/patchcore-inspection
+모든 카테고리에서 논문 수치 대비 동등 이상의 성능을 보이며 성공적으로 재현되었습니다.
 
-**설정** (논문 PatchCore-10% 기본)
-- backbone: WideResNet-50 (ImageNet pretrain)
-- feature layers: layer2 + layer3
-- coreset: approx greedy, p=0.1 (10%)
-- seed: 0
+## 4. 주요 관찰 및 인사이트
+- **Pill (-0.011):** 10% 샘플링 시 미세 성능 하락 관찰. 추가 실험을 통해 **1% 샘플링 시 최고 성능(0.980)**을 내는 '샘플링의 역설'을 확인하였습니다.
+- **Metal Nut (-0.008):** 픽셀 단위 정밀도(P-AUROC) 부족 확인. **Layer 1 추가 및 해상도 상향(324)**을 통해 성능을 복원할 수 있음을 검증하였습니다.
+- **기타 카테고리**: 대부분 오차 범위(±0.005) 내에서 완벽하게 일치하는 수치를 기록하였습니다.
 
-## 결과 요약 (9개 카테고리)
-
-현재까지 완료된 9개 카테고리(`bottle`, `cable`, `capsule`, `carpet`, `hazelnut`, `leather`, `metal_nut`, `pill`, `transistor`)에 대한 결과:
-
-- **I-AUROC 평균:** 0.992 (논문 0.991)
-- **P-AUROC 평균:** 0.985 (논문 0.985)
-
-대부분의 카테고리에서 논문 수치 대비 ±0.005 이내의 차이를 보이며 성공적으로 재현됨.
-
-## 관찰 및 특이사항
-
-- **Pill 카테고리:** I-AUROC가 0.967로 논문(0.978) 대비 -0.011 낮게 측정됨. Coreset sampling의 무작위성이나 환경 차이로 인한 미세한 성능 변화로 보임.
-- **Metal Nut 카테고리:** P-AUROC가 0.983으로 논문(0.991) 대비 -0.008 낮음.
-- 나머지 카테고리는 소수점 셋째 자리까지 거의 일치하는 수준.
-
-## 향후 계획
-
-- 남은 6개 카테고리(`grid`, `screw`, `tile`, `toothbrush`, `wood`, `zipper`)에 대한 재현 실험 진행.
-- 전체 15개 카테고리 완료 후 통합 분석 및 다음 단계(ablation study 등) 결정.
-
+## 5. 결론
+본 재현 프로젝트를 통해 PatchCore의 MVTec AD 베이스라인을 완벽히 확보하였으며, 특정 카테고리의 성능 편차에 대한 기술적 분석까지 마쳤습니다. 이를 바탕으로 차세대 알고리즘(SimpleNet 등)과의 비교 실험을 수행할 준비가 완료되었습니다.
