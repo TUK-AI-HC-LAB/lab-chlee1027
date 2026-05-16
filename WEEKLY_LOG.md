@@ -4,8 +4,8 @@
 - 미팅 자료: [meetings/2026-W21_brief.md](meetings/2026-W21_brief.md)
 
 ### 전주 계획 달성도
-- [ ] PatchCore 프로젝트 최종 문서화 점검 (진행 중)
-- [ ] 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완 (진행 중)
+- [x] **PatchCore 프로젝트 최종 문서화 및 환경 재현성 검토 완결 (2026-05-16)**
+- [x] **코랩 T4 환경 스냅샷(requirements.txt) 및 결과 시각화 반영 완료**
 - [x] **method2_simplenet 폴더 구조 생성 + 논문 요약 작성** → [`method2_simplenet/markdown/simplenet_summary.md`](method2_simplenet/markdown/simplenet_summary.md)
 - [x] **SimpleNet 1차 재현 (toothbrush 단일, 2026-05-16)** — I-AUROC 1.000 / P-AUROC 0.983
   - 노트북: `method2_simplenet/source/simplenet_colab.ipynb`
@@ -18,12 +18,10 @@
 - `pill`, `metal_nut` 분석 보고서 최종 완결
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **PatchCore 프로젝트 최종 마무리**
-  - 모든 markdown 문서(분석, 표, 요약)의 링크 및 경로 최종 점검
-  - `environment_reproducibility_plan.md`의 기술적 실무 적용 가능성 초안 작성
-- **SimpleNet 확장 준비**
-  - `method2_simplenet/` 폴더 구조 생성 및 논문(`paper/`) 업로드
-  - 논문 요약(`markdown/simplenet_summary.md`) 초안 작성
+- **SimpleNet 확장 및 검증**
+  - MVTec AD 전체 카테고리(15개)로 확장 재현 실험 수행
+  - PatchCore 결과와 성능 비교표 초안 작성
+  - SimpleNet의 특이사항(노이즈 투입 로직 등) 분석 보고서 작성 시작
 
 ---
 
