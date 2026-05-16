@@ -37,3 +37,14 @@
 - **평균 성능:** 재현 결과 평균 I-AUROC 0.992(논문: 0.991), 평균 P-AUROC 0.982(논문: 0.981)를 기록하며, 원래 PatchCore 논문 수치와 매우 높은 일치도를 보였습니다.
 - **미세 차이 발생 항목:** `pill` 카테고리에서만 I-AUROC 수치가 논문 대비 약간 낮게(-0.011) 나타났습니다. 이는 Coreset sampling의 무작위성이나 실행 환경(Seed)의 차이로 인한 것으로 추정됩니다. 그 외 모든 카테고리는 오차 범위(Δ ±0.005) 내에서 안정적으로 재현되었습니다.
 
+## 3. 시각화 결과 (Visualization)
+
+재현 실험 과정에서 도출된 주요 시각화 결과입니다.
+
+![repro_result_1](images/repro_result_1.png)
+*PatchCore 재현 실험 결과 예시 (1)*
+
+![repro_result_2](images/repro_result_2.png)
+*PatchCore 재현 실험 결과 예시 (2)*
+
+
