@@ -84,7 +84,35 @@ def image_transform(image):
 
 ## 📂 파일 구조
 - `source/run_patchcore.py`: 수정된 메인 실행 스크립트.
-- `source/run_baseline.sh`: 카테고리별 실험 자동화 쉘 스크립트.
-- `source/results/`: 재현 결과 CSV 파일들.
+- `source/run_baseline.sh`: 카테고리별 baseline 자동화 쉘 스크립트.
+- `source/run_validation.sh`: pill·metal_nut 검증 실험(샘플링/해상도/레이어 스윕) 자동화 쉘 스크립트.
+- `source/apply_modifications.py`: upstream `bin/run_patchcore.py`에 수정사항을 idempotent하게 적용하는 fallback 패치.
+- `source/results/`: 재현 결과 CSV (baseline 15개 + 검증 실험 2개).
 - `markdown/`: 상세 분석 보고서 및 결과 테이블.
 - `source/patchcore_colab.ipynb`: 원본 Colab 실험 노트.
+
+## 📌 재현 출처 (가이드 형식 — commit/sh/csv 3줄)
+
+### Baseline 15개 카테고리
+
+- bottle / leather (5/6 실행)
+  - commit: `553b14f`
+  - sh: `method1_patchcore/source/run_baseline.sh` (CATEGORY=bottle / leather)
+  - csv: `method1_patchcore/source/results/baseline_bottle_20260506.csv`, `baseline_leather_20260506.csv`
+- 그 외 13개 카테고리 (5/10~5/11 실행)
+  - commit: `8bf1630`
+  - sh: `method1_patchcore/source/run_baseline.sh` (CATEGORY=cable, capsule, carpet, grid, hazelnut, metal_nut, pill, screw, tile, toothbrush, transistor, wood, zipper)
+  - csv: `method1_patchcore/source/results/baseline_<category>_<date>.csv` (13개)
+- 집계표: [`method1_patchcore/markdown/baseline_full_table.md`](../markdown/baseline_full_table.md)
+
+### Validation 실험 (pill 샘플링 역설, metal_nut 해상도/레이어 영향)
+
+- pill 종합 스윕
+  - commit: `57e9a11`
+  - sh: `method1_patchcore/source/run_validation.sh`
+  - csv: `method1_patchcore/source/results/val_pill_total_study.csv`
+- metal_nut 종합 스윕
+  - commit: `7c9a723`
+  - sh: `method1_patchcore/source/run_validation.sh`
+  - csv: `method1_patchcore/source/results/val_metal_nut_total_study.csv`
+- 분석 보고서: [`method1_patchcore/markdown/repro_failure_analysis.md`](../markdown/repro_failure_analysis.md)

@@ -6,6 +6,11 @@
 ### 전주 계획 달성도
 - [ ] PatchCore 프로젝트 최종 문서화 점검 (진행 중)
 - [ ] 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완 (진행 중)
+- [x] **method2_simplenet 폴더 구조 생성 + 논문 요약 작성** → [`method2_simplenet/markdown/simplenet_summary.md`](method2_simplenet/markdown/simplenet_summary.md)
+- [x] **SimpleNet 1차 재현 (toothbrush 단일, 2026-05-16)** — I-AUROC 1.000 / P-AUROC 0.983
+  - 노트북: `method2_simplenet/source/simplenet_colab.ipynb`
+  - 결과: `method2_simplenet/source/results/baseline_toothbrush_20260516.csv`
+  - upstream: [DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet) (수정: `metrics.py` `df.append()` → `df.loc[...] = ...`)
 
 ### 이전 미팅 결정 사항 (5/14)
 - README 및 문서의 '계획 중' 상태를 '완료'로 최신화
@@ -40,9 +45,8 @@
 - `pill`, `metal_nut` 분석 보고서 최종 완결
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **PatchCore 프로젝트 최종 문서화 점검**
-  - 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완
-
+- **PatchCore 프로젝트 최종 문서화 점검** — 신규 수립된 [환경 재현성 계획](method1_patchcore/markdown/environment_reproducibility_plan.md) 검토 및 보완
+- **SimpleNet 확장 준비** — `method2_simplenet/` 폴더 생성 + 논문 PDF·요약 작성 (완료, [method2_simplenet/markdown/simplenet_summary.md](method2_simplenet/markdown/simplenet_summary.md))
 
 ---
 
@@ -50,17 +54,26 @@
 - 미팅 자료: [meetings/2026-W19_brief.md](meetings/2026-W19_brief.md)
 
 ### 전주 계획 달성도
-- [o] PatchCore (Roth et al. 2022) baseline 재현 — bottle/leather 4개 지표 전부 논문 수치 ±0.005 이내 재현 성공
+- [x] PatchCore (Roth et al. 2022) baseline 재현 — bottle/leather 4개 지표 전부 논문 수치 ±0.005 이내 재현 성공
   - 결과: `method1_patchcore/source/results/baseline_bottle_20260506.csv`, `method1_patchcore/source/results/baseline_leather_20260506.csv`
   - 분석: `method1_patchcore/markdown/baseline_analysis.md`
   - 실행: `method1_patchcore/source/run_baseline.sh` (CATEGORY=bottle/leather)
 
-### 이전 미팅 결정 사항 (4/30)
-- 시작 method는 PatchCore (Roth et al. 2022) baseline 재현으로 결정 — `method1_patchcore/`
+### 이전 미팅 결정 사항 (5/7)
+- 정식 첫 미팅 — bottle/leather 재현 보고. 미팅 직후 지도교수 피드백 수신
+- 다음 주 우선순위: PatchCore MVTec AD 전 카테고리(15개) 확장 재현
+- 개선 필요: 점진 push 습관 정착 (W19 commit이 5/6 하루에 몰린 점)
+- (상세는 W20 brief에 반영)
+
+### 다음 미팅까지의 계획 (측정 가능한 단위로)
+- 상세는 [meetings/2026-W20_brief.md](meetings/2026-W20_brief.md) 참고
 
 ---
 
 ## 2026-W18 (4/23 ~ 4/30, 4/30 미팅)
 - 미팅 자료: 없음 (참관 미팅)
+
+### 이전 미팅 결정 사항 (4/30)
+- 시작 method는 PatchCore (Roth et al. 2022) baseline 재현으로 결정 — `method1_patchcore/`
 
 

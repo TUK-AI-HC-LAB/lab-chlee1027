@@ -1,33 +1,123 @@
-# SimpleNet: A Simple Network for Image Anomaly Detection and Localization
+# Liu et al. 2023 — SimpleNet: A Simple Network for Image Anomaly Detection and Localization
 
-## 1. 개요 (Overview)
-- **논문명:** SimpleNet: A Simple Network for Image Anomaly Detection and Localization
-- **목적:** 산업용 이미지의 이상 탐지(Anomaly Detection) 및 위치 추정(Localization)을 위한 간단하고 효율적인 네트워크 제안.
-- **주요 성과:**
-  - MVTec AD 데이터셋 기준 99.6% AUROC 달성 (기존 SOTA 대비 오류 55.5% 감소).
-  - RTX 3080 Ti 기준 77 FPS의 빠른 추론 속도 확보.
+> Zhikang Liu, Yiming Zhou, Yuansheng Xu, Zilei Wang. CVPR 2023.
+> 원문 PDF: `method2_simplenet/paper/SimpleNet.pdf`
 
-## 2. 기존 연구의 한계 (Limitations of Previous Works)
-- **Reconstruction-based:** 정상 이미지만으로 학습하여 비정상 이미지를 복원하지 못할 것이라 가정하지만, 종종 비정상 영역도 잘 복원해버리는 문제 발생.
-- **Synthesizing-based:** 정상 이미지에 가짜 이상(anomaly)을 합성하여 학습하지만, 합성된 이상이 실제 불량의 형태와 잘 맞지 않는 경우가 많음.
-- **Embedding-based (e.g., PatchCore):** ImageNet에서 사전 학습된 특징을 그대로 사용할 경우 산업용 이미지와의 분포 차이(Domain Bias)로 인해 성능이 제한되거나 계산량/메모리 요구량이 높음.
+## 한 줄 요약
 
-## 3. SimpleNet의 핵심 구조 (Architecture)
-SimpleNet은 4가지 주요 컴포넌트로 구성됩니다. 추론(Inference) 시에는 Anomaly Feature Generator가 제거되어 단일 스트림으로 빠르게 동작합니다.
+ImageNet 사전학습 백본의 patch feature를 **단일 FC layer(Adaptor)** 로 산업 도메인에 투영하고, 정상 feature에 **Gaussian noise를 더해 가짜 이상 feature를 생성**, 둘을 **2-layer MLP(Discriminator)** 로 분류한다. memory bank 없이 학습 기반으로 MVTec AD 99.6% I-AUROC, 77 FPS 달성.
 
-1. **Feature Extractor (특징 추출기):**
-   - 사전 학습된 백본(주로 WideResNet50)을 사용하여 로컬 특징을 추출.
-2. **Feature Adaptor (특징 어댑터):**
-   - 단일 Fully-Connected(FC) layer를 사용하여 사전 학습된 특징을 타겟 도메인(산업용 이미지)에 맞게 투영(Projection). 도메인 편향을 줄여줌.
-3. **Anomaly Feature Generator (이상 특징 생성기 - 학습 시에만 사용):**
-   - 특징 공간(Feature space)에서 어댑터를 통과한 정상 특징에 가우시안 노이즈($\mathcal{N}(\mu, \sigma^2)$)를 더해 가상의 '이상 특징'을 생성. 이미지 공간에 직접 노이즈를 합성하는 것보다 훨씬 효과적.
-4. **Discriminator (판별기):**
-   - 2-layer MLP 구조. 정상 특징(양성)과 생성된 이상 특징(음성)을 구별하도록 학습됨.
+## 문제 / 동기
 
-## 4. 학습 및 추론 (Training & Inference)
-- **Loss Function:** Truncated L1 loss를 사용하여 판별기를 학습.
-- **Inference:** 테스트 이미지가 들어오면 `Extractor` $\rightarrow$ `Adaptor` $\rightarrow$ `Discriminator`를 순차적으로 통과. Discriminator의 출력이 이상 점수(Anomaly Score)가 되며, 점수가 가장 높은 영역이 불량 위치로 추정.
+- **Cold-start anomaly detection** 동일 — 정상만 있고 비정상은 거의 없는 산업 환경
+- 기존 3가지 접근의 한계
+  - **Reconstruction-based**: 정상만으로 학습해 비정상은 못 복원할 거라 가정하지만, 실제론 비정상 영역도 잘 복원해버림 (generalization gap)
+  - **Synthesizing-based** (DRAEM 등): 이미지 공간에 가짜 결함을 합성. 합성된 결함이 실제 결함 분포와 어긋남
+  - **Embedding-based** (PatchCore, PaDiM): ImageNet pretrain feature를 그대로 사용 — 산업 이미지와의 **domain bias**로 성능 제한 + memory bank로 인한 메모리·시간 비용
+- 목표: **domain bias 줄이고, 학습 가능하면서, 추론은 가볍게**
 
-## 5. 결론 및 의의 (Conclusion)
-- 매우 단순한 신경망 모듈(FC layer, MLP, Gaussian Noise)만으로 구성되어 있어 학습과 적용이 쉬움.
-- 기존의 복잡한 통계적 모델링이나 메모리 뱅크(Memory Bank) 방식 없이도 높은 정확도와 빠른 속도를 동시에 달성하여, 학술적 연구와 산업 현장 적용 사이의 간극을 줄임.
+## 핵심 아이디어 3가지
+
+### 1. Feature Adaptor — 산업 도메인 투영
+
+- pretrained 백본(WRN-50)에서 mid-level patch feature 추출 (PatchCore와 동일 출발점)
+- **단일 FC layer**로 ImageNet feature를 타겟 도메인으로 projection
+- **얕은 어댑터로도 충분** — 핵심은 "쓸 만한 feature를 어떻게 만드느냐"가 아니라 "domain bias를 어떻게 떼느냐"
+- PatchCore는 raw feature를 memory bank에 저장, SimpleNet은 adapted feature를 사용
+
+### 2. Feature-space Anomaly Synthesis — 가짜 이상은 feature에서
+
+- 어댑터 통과 후 정상 feature $f$ 에 가우시안 노이즈 $\mathcal{N}(\mu, \sigma^2)$ 를 더해 가상의 이상 feature $f' = f + \epsilon$ 생성
+- **이미지 공간이 아니라 feature 공간에서** 합성 — DRAEM류의 "실제 결함 분포와 어긋남" 문제를 회피
+- 학습 시에만 사용, **추론 시엔 제거** (단일 stream으로 빠르게 동작)
+
+### 3. Discriminator — 학습 기반 채점
+
+- **2-layer MLP**가 정상 feature(양성) vs 합성 이상 feature(음성)를 분류
+- Loss: **Truncated L1** — 분류 경계에 너무 가까운 정상도, 너무 먼 이상도 양쪽 다 무시 (overfitting 방지)
+- 추론 시 Discriminator 출력 = anomaly score, max score 위치 = 결함 추정 위치
+
+## 학습 / 추론 흐름
+
+학습 (4-component):
+```
+image → Feature Extractor → Feature Adaptor → [Anomaly Feature Generator] → Discriminator → loss
+                                              (정상→가짜 이상 생성)
+```
+
+추론 (3-component, Generator 제거):
+```
+image → Feature Extractor → Feature Adaptor → Discriminator → anomaly score
+```
+
+- 백본: 보통 **WideResNet-50** (PatchCore와 동일)
+- Adaptor·Discriminator만 학습되고 백본은 고정
+- 추론 단일 stream — memory bank 조회/NN 검색이 없어 빠름
+
+## 주요 결과 (논문 발췌)
+
+- MVTec AD 평균 **Image-AUROC 99.6%** (당시 SOTA, 직전 baseline 대비 **error 55.5% 감소**)
+- Pixel-level localization도 SOTA급
+- **77 FPS** (RTX 3080 Ti) — embedding-based 대비 ~50 FPS 빠름
+- 모듈이 단순(FC, MLP, Gaussian noise)해 구현·튜닝이 쉬움
+
+## PatchCore와의 차별점
+
+| 항목 | PatchCore (method1) | SimpleNet (method2) |
+|---|---|---|
+| 학습 필요? | ❌ (memory bank만 구축) | ✅ (Adaptor + Discriminator 학습) |
+| domain bias 대응 | 없음 (raw ImageNet feature) | Feature Adaptor로 투영 |
+| 이상 신호 | NN 거리 (정상 분포 외곽) | Discriminator 점수 (학습된 판별 경계) |
+| 추론 메모리 | memory bank (수만 개 patch) | MLP 가중치만 |
+| 합성 결함 | 사용 안 함 | feature-space에서 Gaussian noise로 합성 |
+| 추론 속도 | NN 검색 비용 | 단일 forward pass (~77 FPS) |
+| MVTec AD 평균 I-AUROC | 99.1~99.6% | 99.6% |
+
+→ SimpleNet은 **PatchCore의 "raw feature + memory bank" 한계**(domain bias, 메모리)에 대한 학습 기반 응답.
+
+## 본 재현 진행 상황
+
+### 1차 재현 — toothbrush 단일 (2026-05-16, Colab T4)
+
+upstream **[DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet)** 사용. pandas 2.0+ 에서 `DataFrame.append()` deprecated 대응으로 `metrics.py` 한 곳만 수정 (`df.append(...)` → `df.loc[len(df)] = ...`). 자세한 내역은 [`../source/README.md`](../source/README.md) "수정 내역" 섹션.
+
+**하이퍼파라미터** (논문 권장 설정 기준)
+
+| 항목 | 값 |
+|---|---|
+| backbone | WideResNet-50 |
+| feature layers | layer2 + layer3 |
+| pretrain / target embed dim | 1536 / 1536 |
+| patchsize | 3 |
+| meta_epochs | 40 |
+| gan_epochs | 4 |
+| noise_std (Generator) | 0.015 |
+| dsc_hidden / dsc_layers | 1024 / 2 |
+| dsc_margin | 0.5 |
+| pre_proj | 1 |
+| batch_size | 8 |
+| resize / imagesize | 256 / 224 |
+| seed | 0 |
+
+**결과** (`../source/results/baseline_toothbrush_20260516.csv`)
+
+| 지표 | 재현 | 비고 |
+|---|---|---|
+| Instance AUROC | **1.000** | 논문 MVTec 평균 0.996과 동등 이상 (단일 카테고리) |
+| Full Pixel AUROC | **0.983** | 양호 |
+| Anomaly Pixel AUROC | **0.904** | localization 정밀도는 다소 보수적 |
+
+**관찰**
+- toothbrush는 PatchCore도 만점에 가깝게 나오는 카테고리(논문상 1.000). SimpleNet도 I-AUROC saturating
+- Pixel-level은 SimpleNet 논문 평균(~0.98)에 부합. anomaly pixel은 노이즈 std·임계값에 민감해 보임 — 다른 카테고리에서 거동 확인 필요
+- upstream 코드는 deprecated pandas API 외엔 큰 수정 없이 Colab에서 그대로 실행 가능
+
+### 다음 단계
+
+1. 카테고리 확장 — method1과 동일하게 bottle, leather → 15개 전 카테고리
+2. 노트북 → 셸 스크립트화 (`run_baseline.sh`, CATEGORY 환경변수)
+3. PatchCore baseline과 직접 비교 (같은 카테고리·같은 백본·같은 입력 크기)
+4. 비교 분석 노트 작성 — `simplenet_vs_patchcore.md` (예정)
+
+> 실행 가이드: [`../source/README.md`](../source/README.md)
+> 1차 노트북: [`../source/simplenet_colab.ipynb`](../source/simplenet_colab.ipynb)
