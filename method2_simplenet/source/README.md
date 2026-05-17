@@ -2,7 +2,7 @@
 
 SimpleNet (Liu et al. 2023, *SimpleNet: A Simple Network for Image Anomaly Detection and Localization*, CVPR 2023) 재현·실험을 위한 source 디렉토리입니다.
 
-> 현재 단계: **1차 재현 완료 (toothbrush 단일)** — 논문 요약 ([../markdown/simplenet_summary.md](../markdown/simplenet_summary.md)), 1차 실험 노트북 (`simplenet_colab.ipynb`), 결과 csv (`results/baseline_toothbrush_20260516.csv`).
+> 현재 단계: **1·2차 재현 완료 (toothbrush, bottle — 2/15)** — 논문 요약 ([../markdown/simplenet_summary.md](../markdown/simplenet_summary.md)), 실험 노트북 (`simplenet_colab.ipynb`), 결과 csv (`results/baseline_toothbrush.csv`, `results/baseline_bottle.csv`), 통합 테이블 ([../markdown/baseline_full_table.md](../markdown/baseline_full_table.md)).
 
 ## 환경
 

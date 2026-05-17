@@ -7,12 +7,16 @@
 - [x] **PatchCore 프로젝트 최종 문서화 및 환경 재현성 검토 완결 (2026-05-16)**
 - [x] **코랩 T4 환경 스냅샷(requirements.txt) 및 결과 시각화 반영 완료**
 - [x] **method2_simplenet 폴더 구조 생성 + 논문 요약 작성** → [`method2_simplenet/markdown/simplenet_summary.md`](method2_simplenet/markdown/simplenet_summary.md)
-- [x] **SimpleNet 1차 재현 및 시각화 버그 수정 완료 (2026-05-17)** — I-AUROC 1.000 / P-AUROC 0.985 / PRO-AUROC 0.915
+- [x] **SimpleNet 1·2차 재현 + 시각화 버그 수정 완료 (2026-05-16 ~ 17)**
+  - 5/16 toothbrush 1차: I-AUROC 1.000 / P-AUROC 0.983 / Anomaly P 0.904 (시각화 미생성 이슈 발견)
+  - 5/17 시각화 패치 후 재실행:
+    - toothbrush: I-AUROC 1.000 / P-AUROC **0.985** / Anomaly P **0.915** (패치 후 P 두 지표 모두 소폭 상승)
+    - bottle (신규): I-AUROC 1.000 / P-AUROC 0.978 / Anomaly P 0.915
   - 시각화: `main.py` 버그 패치 후 히트맵 생성 성공 (노트북 내 출력 확인)
   - 노트북: `method2_simplenet/source/simplenet_colab.ipynb` (실행 결과 포함 업데이트)
-  - 결과: `method2_simplenet/source/results/baseline_toothbrush.csv` (통합)
-  - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) 생성 및 첫 데이터 반영
-  - 수정 사항: `metrics.py` (pandas 호환), `main.py` (시각화 활성화)
+  - 결과 csv: `method2_simplenet/source/results/baseline_toothbrush.csv` (5/16, 5/17 통합), `baseline_bottle.csv`
+  - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) (현재 2/15)
+  - 수정 사항 3건: `metrics.py` (pandas 호환), `main.py` (시각화 활성화), `simplenet_colab.ipynb` (자동 실행 셀 + 결과 수직 나열)
 - [x] **method3_RD 프로젝트 착수 (2026-05-18)**
   - 논문 분석 및 요약 완료: [`method3_RD/markdown/rd_summary.md`](method3_RD/markdown/rd_summary.md)
   - 폴더 구조 및 기본 README 생성 완료
