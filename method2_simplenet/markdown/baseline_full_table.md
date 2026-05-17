@@ -12,7 +12,7 @@
 
 | Category | I-AUROC (Repro) | I-AUROC (Paper) | Δ (I) | P-AUROC (Repro) | P-AUROC (Paper) | Δ (P) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| bottle | - | 1.000 | - | - | 0.982 | - | Planning |
+| bottle | 1.000 | 1.000 | +0.000 | 0.978 | 0.982 | -0.004 | Done |
 | cable | - | 0.995 | - | - | 0.985 | - | Planning |
 | capsule | - | 0.985 | - | - | 0.990 | - | Planning |
 | carpet | - | 0.992 | - | - | 0.990 | - | Planning |
