@@ -69,19 +69,9 @@ python3 main.py \
 
 ## 수정 내역 (upstream 대비)
 
-`metrics.py` 한 곳만 수정. pandas 2.0+ 에서 `DataFrame.append()` 가 제거됐는데 upstream은 아직 사용 중. `df.loc[len(df)] = ...` 로 교체.
-
-**원본 (Upstream `metrics.py`)**:
-```python
-df = df.append({"pro": np.mean(pros), "fpr": fpr, "threshold": th}, ignore_index=True)
-```
-
-**수정 후**:
-```python
-df.loc[len(df)] = {"pro": np.mean(pros), "fpr": fpr, "threshold": th}
-```
-
-(`simplenet_colab.ipynb` 셀 2에서 `Path.read_text/write_text` 로 in-place 패치)
+1. **`metrics.py`**: pandas 2.0+ 호환성을 위해 `df.append()`를 `df.loc[len(df)] = ...`로 수정.
+2. **`main.py`**: 시각화 버그 수정을 위해 주석 처리된 `test()` 호출을 활성화하고, `train()` 완료 후 자동으로 시각화가 실행되도록 로직 추가.
+3. **`simplenet_colab.ipynb`**: 위 패치들을 자동 실행 셀로 포함하고, 결과 이미지를 수직으로 나열하여 출력하는 셀 추가.
 
 ## 핵심 구조 (논문 요약 참조)
 
@@ -96,24 +86,25 @@ df.loc[len(df)] = {"pro": np.mean(pros), "fpr": fpr, "threshold": th}
 
 ## 결과
 
-### 1차 재현 (toothbrush, 2026-05-16)
+### 1차 재현 (toothbrush, 2026-05-17)
 
 | 지표 | 재현 | 비고 |
 |---|---|---|
-| Instance AUROC | **1.000** | 논문 수치(MVTec 평균 0.996, 단일 카테고리는 더 높을 수 있음)와 동등 이상 |
-| Full Pixel AUROC | **0.983** | 양호 |
-| Anomaly Pixel AUROC | **0.904** | localization 정밀도는 다소 보수적 |
+| Instance AUROC | **1.000** | 논문 수치와 동등 |
+| Full Pixel AUROC | **0.985** | 이전(0.983) 대비 소폭 상승 |
+| Anomaly Pixel AUROC | **0.915** | 이전(0.904) 대비 상승, 시각화 확인 완료 |
 
-- 결과 csv: `results/baseline_toothbrush_20260516.csv`
-- 노트북: `simplenet_colab.ipynb`
+- 결과 csv: `results/baseline_toothbrush_20260517.csv` (예정)
+- 노트북: `simplenet_colab.ipynb` (실행 결과 포함)
+- **시각화**: 히트맵 생성 성공 및 노트북 내 수직 나열 출력 확인.
 
 ## 재현 출처 (가이드 형식 — commit/sh/csv 3줄)
 
-### 1차 — toothbrush
+### 1차 — toothbrush (2026-05-17)
 
 - commit: (push 시점 채움)
 - sh / 노트북: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/baseline_toothbrush_20260516.csv`
+- csv: `method2_simplenet/source/results/baseline_toothbrush_20260517.csv`
 
 ## 다음 단계
 

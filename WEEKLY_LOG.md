@@ -7,10 +7,11 @@
 - [x] **PatchCore 프로젝트 최종 문서화 및 환경 재현성 검토 완결 (2026-05-16)**
 - [x] **코랩 T4 환경 스냅샷(requirements.txt) 및 결과 시각화 반영 완료**
 - [x] **method2_simplenet 폴더 구조 생성 + 논문 요약 작성** → [`method2_simplenet/markdown/simplenet_summary.md`](method2_simplenet/markdown/simplenet_summary.md)
-- [x] **SimpleNet 1차 재현 (toothbrush 단일, 2026-05-16)** — I-AUROC 1.000 / P-AUROC 0.983
-  - 노트북: `method2_simplenet/source/simplenet_colab.ipynb`
-  - 결과: `method2_simplenet/source/results/baseline_toothbrush_20260516.csv`
-  - upstream: [DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet) (수정: `metrics.py` `df.append()` → `df.loc[...] = ...`)
+- [x] **SimpleNet 1차 재현 및 시각화 버그 수정 완료 (2026-05-17)** — I-AUROC 1.000 / P-AUROC 0.985 / PRO-AUROC 0.915
+  - 시각화: `main.py` 버그 패치 후 히트맵 생성 성공 (노트북 내 출력 확인)
+  - 노트북: `method2_simplenet/source/simplenet_colab.ipynb` (실행 결과 포함 업데이트)
+  - 결과: `method2_simplenet/source/results/baseline_toothbrush_20260517.csv` (예정)
+  - 수정 사항: `metrics.py` (pandas 호환), `main.py` (시각화 활성화)
 
 ### 이전 미팅 결정 사항 (5/14)
 - README 및 문서의 '계획 중' 상태를 '완료'로 최신화
