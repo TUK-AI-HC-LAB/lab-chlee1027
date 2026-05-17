@@ -2,7 +2,7 @@
 
 - commit: `486146d`
 - sh / notebook: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/ (Individual categories)`
+- csv: `method2_simplenet/source/results/baseline_toothbrush.csv` (15 categories planned)
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.10.0+cu128
 > **Settings:** SimpleNet (WideResNet50, layers 2+3, patchsize 3, meta_epochs 40, gan_epochs 4)

@@ -10,7 +10,7 @@
 - [x] **SimpleNet 1차 재현 및 시각화 버그 수정 완료 (2026-05-17)** — I-AUROC 1.000 / P-AUROC 0.985 / PRO-AUROC 0.915
   - 시각화: `main.py` 버그 패치 후 히트맵 생성 성공 (노트북 내 출력 확인)
   - 노트북: `method2_simplenet/source/simplenet_colab.ipynb` (실행 결과 포함 업데이트)
-  - 결과: `method2_simplenet/source/results/baseline_toothbrush_20260517.csv`
+  - 결과: `method2_simplenet/source/results/baseline_toothbrush.csv` (통합)
   - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) 생성 및 첫 데이터 반영
   - 수정 사항: `metrics.py` (pandas 호환), `main.py` (시각화 활성화)
 

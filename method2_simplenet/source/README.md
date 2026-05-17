@@ -94,7 +94,7 @@ python3 main.py \
 | Full Pixel AUROC | **0.985** | 이전(0.983) 대비 소폭 상승 |
 | Anomaly Pixel AUROC | **0.915** | 이전(0.904) 대비 상승, 시각화 확인 완료 |
 
-- 결과 csv: `results/baseline_toothbrush_20260517.csv` (예정)
+- 결과 csv: `results/baseline_toothbrush.csv` (5/16, 5/17 통합 기록)
 - 노트북: `simplenet_colab.ipynb` (실행 결과 포함)
 - **시각화**: 히트맵 생성 성공 및 노트북 내 수직 나열 출력 확인.
 
@@ -104,7 +104,7 @@ python3 main.py \
 
 - commit: (push 시점 채움)
 - sh / 노트북: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/baseline_toothbrush_20260517.csv`
+- csv: `method2_simplenet/source/results/baseline_toothbrush.csv`
 
 ## 다음 단계
 
