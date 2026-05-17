@@ -4,6 +4,7 @@
 |---|------|------|------|
 | 1 | [method1_patchcore](method1_patchcore/source/) | Roth et al., 2022, *Towards Total Recall in Industrial Anomaly Detection* (CVPR 2022, PatchCore) | **최종 완료 (MVTec AD 15개 전 카테고리 재현 및 문서화 완결, I-AUROC 0.992)** |
 | 2 | [method2_simplenet](method2_simplenet/source/) | Liu et al., 2023, *SimpleNet: A Simple Network for Image Anomaly Detection and Localization* (CVPR 2023) | **1차 재현 완료 및 시각화 성공 (toothbrush, I-AUROC 1.000 / P-AUROC 0.985 / PRO-AUROC 0.915)** |
+| 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022, *Anomaly Detection via Reverse Distillation from One-Class Embedding* (CVPR 2022, RD) | 논문 분석 및 구조 생성 (실험 예정) |
 
 ## 진행 상황 요약
 

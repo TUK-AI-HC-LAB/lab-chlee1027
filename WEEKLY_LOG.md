@@ -13,6 +13,10 @@
   - 결과: `method2_simplenet/source/results/baseline_toothbrush.csv` (통합)
   - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) 생성 및 첫 데이터 반영
   - 수정 사항: `metrics.py` (pandas 호환), `main.py` (시각화 활성화)
+- [x] **method3_RD 프로젝트 착수 (2026-05-18)**
+  - 논문 분석 및 요약 완료: [`method3_RD/markdown/rd_summary.md`](method3_RD/markdown/rd_summary.md)
+  - 폴더 구조 및 기본 README 생성 완료
+  - 바탕 화면의 논문 PDF를 `method3_RD/paper/`로 이동 정비
 
 ### 이전 미팅 결정 사항 (5/14)
 - README 및 문서의 '계획 중' 상태를 '완료'로 최신화
