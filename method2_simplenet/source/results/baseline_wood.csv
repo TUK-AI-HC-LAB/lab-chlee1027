@@ -1,0 +1,2 @@
+category,i_auroc,p_auroc,pro_auroc,batch_size,resize,image_size
+wood,1.000,0.940,0.839,8,329,288
