@@ -2,9 +2,9 @@
 
 | # | 폴더 | 논문 | 상태 |
 |---|------|------|------|
-| 1 | [method1_patchcore](method1_patchcore/source/) | Roth et al., 2022 (PatchCore) | **완료 (15/15, I-AUROC 0.992)** |
-| 2 | [method2_simplenet](method2_simplenet/source/) | Liu et al., 2023 (SimpleNet) | **진행 중 (9/15, 논문 파라미터 적용)** |
-| 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022 (RD) | 분석 및 구조 생성 완료 (실험 예정) |
+| 1 | [method1_patchcore](method1_patchcore/source/) | Roth et al., 2022, Towards Total Recall in Industrial Anomaly Detection (CVPR 2022, PatchCore) | 재현 완료 (MVTec AD: 15/15 카테고리) |
+| 2 | [method2_simplenet](method2_simplenet/source/) | Liu et al., 2023, SimpleNet: A Simple Network for Image Anomaly Detection and Localization (CVPR 2023) | 재현 진행 중 (MVTec AD: 9/15 카테고리) |
+| 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022, Anomaly Detection via Reverse Distillation from One-Class Embedding (CVPR 2022, RD) | 분석 및 구조 생성 완료 (실험 예정) |
 
 ## 진행 상황 요약
 
