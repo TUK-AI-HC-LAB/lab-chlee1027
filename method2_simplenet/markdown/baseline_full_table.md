@@ -21,19 +21,20 @@
 | hazelnut | - | 0.999 | - | - | 0.988 | - | Planning |
 | leather | - | 1.000 | - | - | 0.993 | - | Planning |
 | metal_nut | 1.000 | 1.000 | +0.000 | 0.986 | 0.981 | +0.005 | Done |
-| pill | - | 0.987 | - | - | 0.975 | - | Planning |
+| pill | 0.986 | 0.987 | -0.001 | 0.984 | 0.975 | +0.009 | Done |
 | screw | - | 0.992 | - | - | 0.996 | - | Planning |
 | tile | - | 0.999 | - | - | 0.966 | - | Planning |
 | toothbrush | 0.997 | 0.991 | +0.006 | 0.984 | 0.984 | +0.000 | Done |
 | transistor | - | 1.000 | - | - | 0.977 | - | Planning |
 | wood | 1.000 | 0.992 | +0.008 | 0.940 | 0.949 | -0.009 | Done |
 | zipper | - | 0.998 | - | - | 0.991 | - | Planning |
-| **Mean** | **0.999** | **0.996** | **+0.003** | **0.974** | **0.981** | **-0.007** | (4/15) |
+| **Mean** | **0.997** | **0.996** | **+0.001** | **0.974** | **0.981** | **-0.007** | (5/15) |
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
 ## 2. 주요 관찰 사항 (Summary)
 
+- **5차 재현 (2026-05-18):** `pill` I-AUROC 0.986, P-AUROC 0.984 기록. 논문 수치(각각 0.987, 0.975)와 매우 근접하게 재현됨.
 - **toothbrush 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 0.997, P-AUROC 0.984 기록. 논문 수치와 완벽하게 일치하거나 상회함.
 - **4차 재현 (2026-05-18):** `wood` I-AUROC 1.000, P-AUROC 0.940 기록. P-AUROC가 논문(0.949) 대비 소폭 낮으나 I-AUROC는 완벽하게 재현됨.
 - **3차 재현 (2026-05-18):** `metal_nut` I-AUROC 1.000, P-AUROC 0.986 기록. 논문 설정과 동일하게 `batchsize 8`, `resize 329`, `imagesize 288`로 조정하여 수행.
