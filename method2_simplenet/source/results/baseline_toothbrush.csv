@@ -1,3 +1,4 @@
 date,category,backbone,layers,pretrain_embed_dim,target_embed_dim,patchsize,meta_epochs,gan_epochs,noise_std,dsc_hidden,dsc_layers,batch_size,seed,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,environment,notes
 2026-05-16,toothbrush,wideresnet50,layer2+layer3,1536,1536,3,40,4,0.015,1024,2,8,0,1.000,0.983,0.904,Colab / DonaldRR-SimpleNet upstream,1차 재현 (시각화 미생성 이슈)
 2026-05-17,toothbrush,wideresnet50,layer2+layer3,1536,1536,3,40,4,0.015,1024,2,4,0,1.000,0.985,0.915,Colab / DonaldRR-SimpleNet patched,시각화 버그 수정 및 재실행 완료 (최종)
+2026-05-18,toothbrush,wideresnet50,layer2+layer3,1536,1536,3,40,4,0.015,1024,2,8,0,0.997,0.984,0.934,Colab T4,논문 파라미터 적용 (resize 329 / imagesize 288)
