@@ -14,7 +14,7 @@
 | Category | I-AUROC (Repro) | I-AUROC (Paper) | Δ (I) | P-AUROC (Repro) | P-AUROC (Paper) | Δ (P) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | bottle | 1.000 | 1.000 | +0.000 | 0.980 | 0.982 | -0.002 | Done |
-| cable | - | 0.995 | - | - | 0.985 | - | Planning |
+| cable | 0.999 | 0.995 | +0.004 | 0.974 | 0.985 | -0.011 | Done |
 | capsule | - | 0.985 | - | - | 0.990 | - | Planning |
 | carpet | - | 0.992 | - | - | 0.990 | - | Planning |
 | grid | - | 0.984 | - | - | 0.983 | - | Planning |
@@ -28,12 +28,13 @@
 | transistor | 1.000 | 1.000 | +0.000 | 0.969 | 0.977 | -0.008 | Done |
 | wood | 1.000 | 0.992 | +0.008 | 0.940 | 0.949 | -0.009 | Done |
 | zipper | - | 0.998 | - | - | 0.991 | - | Planning |
-| **Mean** | **0.997** | **0.996** | **+0.001** | **0.974** | **0.981** | **-0.007** | (6/15) |
+| **Mean** | **0.997** | **0.996** | **+0.001** | **0.974** | **0.981** | **-0.007** | (7/15) |
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
 ## 2. 주요 관찰 사항 (Summary)
 
+- **7차 재현 (2026-05-18):** `cable` I-AUROC 0.999, P-AUROC 0.974 기록. I-AUROC는 논문(0.995)을 상회하였으며, P-AUROC는 소폭 낮음.
 - **6차 재현 (2026-05-18):** `transistor` I-AUROC 1.000, P-AUROC 0.969 기록. I-AUROC는 완벽하게 재현되었으며, P-AUROC는 논문(0.977) 대비 소폭 낮음.
 - **bottle 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 1.000, P-AUROC 0.980 기록. P-AUROC가 이전 대비 소폭 상승(0.978 → 0.980)함.
 - **toothbrush 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 0.997, P-AUROC 0.984 기록. 논문 수치와 완벽하게 일치하거나 상회함.
