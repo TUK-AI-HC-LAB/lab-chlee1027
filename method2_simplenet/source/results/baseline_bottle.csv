@@ -1,2 +1,3 @@
 date,category,backbone,layers,pretrain_embed_dim,target_embed_dim,patchsize,meta_epochs,gan_epochs,noise_std,dsc_hidden,dsc_layers,batch_size,seed,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,environment,notes
 2026-05-17,bottle,wideresnet50,layer2+layer3,1536,1536,3,40,4,0.015,1024,2,4,0,1.000,0.978,0.915,Colab / DonaldRR-SimpleNet patched,bottle 카테고리 재현 완료
+2026-05-18,bottle,wideresnet50,layer2+layer3,1536,1536,3,40,4,0.015,1024,2,8,0,1.000,0.980,0.910,Colab T4,논문 파라미터 적용 (resize 329 / imagesize 288)

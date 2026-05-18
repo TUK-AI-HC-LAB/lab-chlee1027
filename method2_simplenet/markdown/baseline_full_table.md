@@ -13,7 +13,7 @@
 
 | Category | I-AUROC (Repro) | I-AUROC (Paper) | Δ (I) | P-AUROC (Repro) | P-AUROC (Paper) | Δ (P) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| bottle | 1.000 | 1.000 | +0.000 | 0.978 | 0.982 | -0.004 | Done |
+| bottle | 1.000 | 1.000 | +0.000 | 0.980 | 0.982 | -0.002 | Done |
 | cable | - | 0.995 | - | - | 0.985 | - | Planning |
 | capsule | - | 0.985 | - | - | 0.990 | - | Planning |
 | carpet | - | 0.992 | - | - | 0.990 | - | Planning |
@@ -28,12 +28,13 @@
 | transistor | - | 1.000 | - | - | 0.977 | - | Planning |
 | wood | 1.000 | 0.992 | +0.008 | 0.940 | 0.949 | -0.009 | Done |
 | zipper | - | 0.998 | - | - | 0.991 | - | Planning |
-| **Mean** | **0.997** | **0.996** | **+0.001** | **0.974** | **0.981** | **-0.007** | (5/15) |
+| **Mean** | **0.997** | **0.996** | **+0.001** | **0.975** | **0.981** | **-0.006** | (5/15) |
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
 ## 2. 주요 관찰 사항 (Summary)
 
+- **bottle 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 1.000, P-AUROC 0.980 기록. P-AUROC가 이전 대비 소폭 상승(0.978 → 0.980)함.
 - **5차 재현 (2026-05-18):** `pill` I-AUROC 0.986, P-AUROC 0.984 기록. 논문 수치(각각 0.987, 0.975)와 매우 근접하게 재현됨.
 - **toothbrush 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 0.997, P-AUROC 0.984 기록. 논문 수치와 완벽하게 일치하거나 상회함.
 - **4차 재현 (2026-05-18):** `wood` I-AUROC 1.000, P-AUROC 0.940 기록. P-AUROC가 논문(0.949) 대비 소폭 낮으나 I-AUROC는 완벽하게 재현됨.
