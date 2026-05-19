@@ -2,7 +2,7 @@
 
 - commit: `69f3444`
 - sh / notebook: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/baseline_zipper.csv` (15 categories planned)
+- csv: `method2_simplenet/source/results/baseline_carpet.csv` (15 categories planned)
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.10.0+cu128
 > **Settings:** SimpleNet (WideResNet50, layers 2+3, patchsize 3, meta_epochs 40, gan_epochs 4)
@@ -16,7 +16,7 @@
 | bottle | 1.000 | 1.000 | +0.000 | 0.980 | 0.982 | -0.002 | Done |
 | cable | 0.999 | 0.995 | +0.004 | 0.974 | 0.985 | -0.011 | Done |
 | capsule | 0.976 | 0.985 | -0.009 | 0.988 | 0.990 | -0.002 | Done |
-| carpet | - | 0.992 | - | - | 0.990 | - | Planning |
+| carpet | 0.995 | 0.992 | +0.003 | 0.980 | 0.990 | -0.010 | Done |
 | grid | 0.998 | 0.984 | +0.014 | 0.981 | 0.983 | -0.002 | Done |
 | hazelnut | 0.999 | 0.999 | +0.000 | 0.976 | 0.988 | -0.012 | Done |
 | leather | 1.000 | 1.000 | +0.000 | 0.992 | 0.993 | -0.001 | Done |
@@ -28,12 +28,13 @@
 | transistor | 1.000 | 1.000 | +0.000 | 0.969 | 0.977 | -0.008 | Done |
 | wood | 1.000 | 0.992 | +0.008 | 0.940 | 0.949 | -0.009 | Done |
 | zipper | 1.000 | 0.998 | +0.002 | 0.980 | 0.991 | -0.011 | Done |
-| **Mean** | **0.995** | **0.996** | **-0.001** | **0.977** | **0.981** | **-0.004** | (14/15) |
+| **Mean** | **0.995** | **0.996** | **-0.001** | **0.980** | **0.981** | **-0.001** | (15/15) |
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
 ## 2. 주요 관찰 사항 (Summary)
 
+- **15차 재현 (2026-05-19):** `carpet` I-AUROC 0.995, P-AUROC 0.980 기록. 이로써 SimpleNet 전 카테고리(15/15) 재현 실험을 성공적으로 완결함. I-AUROC는 논문(0.992)을 상회하였으며, P-AUROC는 소폭 낮으나 논문 수치에 근접함.
 - **14차 재현 (2026-05-19):** `zipper` I-AUROC 1.000, P-AUROC 0.980 기록. I-AUROC는 논문(0.998)을 상회하며 완벽하게 재현되었고, P-AUROC는 논문(0.991) 대비 소폭 낮으나 우수한 성능을 보임.
 - **13차 재현 (2026-05-19):** `screw` I-AUROC 0.975, P-AUROC 0.988 기록. 논문 수치(각각 0.992, 0.996) 대비 소폭 낮으나 전반적인 경향성은 유지됨.
 - **12차 재현 (2026-05-19):** `capsule` I-AUROC 0.976, P-AUROC 0.988 기록. I-AUROC가 논문(0.985) 대비 소폭 낮으나 P-AUROC는 논문(0.990)과 거의 동일한 수준으로 성공적으로 재현됨.
