@@ -32,7 +32,15 @@
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
-## 2. 주요 관찰 사항 (Summary)
+## 2. Reproduction Visuals
+
+![Reproduction Result 1](images/repro_result_1.png)
+*Figure 1: SimpleNet Reproduction - Sample Anomaly Maps (1)*
+
+![Reproduction Result 2](images/repro_result_2.png)
+*Figure 2: SimpleNet Reproduction - Sample Anomaly Maps (2)*
+
+## 3. 주요 관찰 사항 (Summary)
 
 - **15차 재현 (2026-05-19):** `carpet` I-AUROC 0.995, P-AUROC 0.980 기록. 이로써 SimpleNet 전 카테고리(15/15) 재현 실험을 성공적으로 완결함. I-AUROC는 논문(0.992)을 상회하였으며, P-AUROC는 소폭 낮으나 논문 수치에 근접함.
 - **14차 재현 (2026-05-19):** `zipper` I-AUROC 1.000, P-AUROC 0.980 기록. I-AUROC는 논문(0.998)을 상회하며 완벽하게 재현되었고, P-AUROC는 논문(0.991) 대비 소폭 낮으나 우수한 성능을 보임.
