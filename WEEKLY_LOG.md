@@ -17,6 +17,11 @@
   - 결과 csv: `method2_simplenet/source/results/baseline_toothbrush.csv` (5/16, 5/17 통합), `baseline_bottle.csv`
   - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) (현재 2/15)
   - 수정 사항 3건: `metrics.py` (pandas 호환), `main.py` (시각화 활성화), `simplenet_colab.ipynb` (자동 실행 셀 + 결과 수직 나열)
+- [x] **SimpleNet 3~11차 확장 재현 수행 (2026-05-18 ~ 19)**
+  - 5/18 (3~9차): `metal_nut`, `wood`, `transistor`, `cable`, `hazelnut`, `leather` 등 7개 카테고리 추가 완료
+  - 5/19 (10~11차): `tile`, `grid` 카테고리 추가 완료 (현재 11/15)
+  - 모든 실험은 논문 동일 설정(`batchsize 8`, `resize 329`, `imagesize 288`) 적용
+  - 통합 테이블 및 개별 CSV 실시간 업데이트 및 푸시 완료
 - [x] **method3_RD 프로젝트 착수 (2026-05-18)**
   - 논문 분석 및 요약 완료: [`method3_RD/markdown/rd_summary.md`](method3_RD/markdown/rd_summary.md)
   - 폴더 구조 및 기본 README 생성 완료
