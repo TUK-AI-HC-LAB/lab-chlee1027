@@ -1,6 +1,6 @@
 # SimpleNet Baseline Reproduction Results (MVTec AD)
 
-- commit: `486146d`
+- commit: `69f3444`
 - sh / notebook: `method2_simplenet/source/simplenet_colab.ipynb`
 - csv: `method2_simplenet/source/results/baseline_grid.csv` (15 categories planned)
 
