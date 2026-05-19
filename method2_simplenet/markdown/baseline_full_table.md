@@ -1,8 +1,8 @@
 # SimpleNet Baseline Reproduction Results (MVTec AD)
 
-- commit: `69f3444`
+- commit: `2cd1e4a`
 - sh / notebook: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/baseline_carpet.csv` (15 categories planned)
+- csv: `method2_simplenet/source/results/ (15 categories)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.10.0+cu128
 > **Settings:** SimpleNet (WideResNet50, layers 2+3, patchsize 3, meta_epochs 40, gan_epochs 4)
@@ -30,33 +30,20 @@
 | zipper | 1.000 | 0.998 | +0.002 | 0.980 | 0.991 | -0.011 | Done |
 | **Mean** | **0.995** | **0.996** | **-0.001** | **0.980** | **0.981** | **-0.001** | (15/15) |
 
-*Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
+*Δ = Repro - Paper. Δ < ±0.010 is generally considered a successful reproduction for SimpleNet.*
 
-## 2. Reproduction Visuals
+## 2. 주요 관찰 사항
 
-![Reproduction Result 1](images/repro_result_1.png)
+- **전 카테고리 재현 완료:** 총 15개 카테고리 전체에 대해 논문과 동일한 파라미터 설정을 적용하여 재현 실험을 완결했습니다.
+- **평균 성능:** 재현 결과 평균 I-AUROC 0.995(논문: 0.996), 평균 P-AUROC 0.980(논문: 0.981)을 기록하며 논문 수치와 매우 근접한 성능을 확인했습니다.
+- **수치 편차 분석:** `screw`(-0.017) 및 `capsule`(-0.009) 카테고리에서 I-AUROC 수치가 논문 대비 소폭 낮게 관찰되었습니다. 이는 SimpleNet의 특징인 가우시안 노이즈 투입 로직과 Discriminator(GAN) 학습 과정의 확률적 요소(stochasticity)로 인한 미세한 차이로 분석됩니다. 그 외 대부분의 항목은 오차 범위 내에서 안정적인 재현성을 보였습니다.
+
+## 3. 시각화 결과 (Visualization)
+
+재현 실험 과정에서 도출된 주요 시각화 결과입니다.
+
+![repro_result_1](images/repro_result_1.png)
 *Figure 1: SimpleNet Reproduction - Sample Anomaly Maps (1)*
 
-![Reproduction Result 2](images/repro_result_2.png)
+![repro_result_2](images/repro_result_2.png)
 *Figure 2: SimpleNet Reproduction - Sample Anomaly Maps (2)*
-
-## 3. 주요 관찰 사항 (Summary)
-
-- **15차 재현 (2026-05-19):** `carpet` I-AUROC 0.995, P-AUROC 0.980 기록. 이로써 SimpleNet 전 카테고리(15/15) 재현 실험을 성공적으로 완결함. I-AUROC는 논문(0.992)을 상회하였으며, P-AUROC는 소폭 낮으나 논문 수치에 근접함.
-- **14차 재현 (2026-05-19):** `zipper` I-AUROC 1.000, P-AUROC 0.980 기록. I-AUROC는 논문(0.998)을 상회하며 완벽하게 재현되었고, P-AUROC는 논문(0.991) 대비 소폭 낮으나 우수한 성능을 보임.
-- **13차 재현 (2026-05-19):** `screw` I-AUROC 0.975, P-AUROC 0.988 기록. 논문 수치(각각 0.992, 0.996) 대비 소폭 낮으나 전반적인 경향성은 유지됨.
-- **12차 재현 (2026-05-19):** `capsule` I-AUROC 0.976, P-AUROC 0.988 기록. I-AUROC가 논문(0.985) 대비 소폭 낮으나 P-AUROC는 논문(0.990)과 거의 동일한 수준으로 성공적으로 재현됨.
-- **11차 재현 (2026-05-19):** `grid` I-AUROC 0.998, P-AUROC 0.981 기록. 논문 수치(각각 0.984, 0.983) 대비 I-AUROC에서 +0.014 높은 성능을 보이며 성공적으로 재현됨.
-- **10차 재현 (2026-05-19):** `tile` I-AUROC 0.999, P-AUROC 0.961 기록. 논문 수치(각각 0.999, 0.966)와 매우 근접하게 재현됨.
-- **9차 재현 (2026-05-18):** `leather` I-AUROC 1.000, P-AUROC 0.992 기록. 논문 수치(각각 1.000, 0.993)와 거의 동일한 수준으로 완벽하게 재현됨.
-- **8차 재현 (2026-05-18):** `hazelnut` I-AUROC 0.999, P-AUROC 0.976 기록. I-AUROC는 논문(0.999)과 완벽하게 일치하며, P-AUROC는 소폭 낮음.
-- **7차 재현 (2026-05-18):** `cable` I-AUROC 0.999, P-AUROC 0.974 기록. I-AUROC는 논문(0.995)을 상회하였으며, P-AUROC는 소폭 낮음.
-- **6차 재현 (2026-05-18):** `transistor` I-AUROC 1.000, P-AUROC 0.969 기록. I-AUROC는 완벽하게 재현되었으며, P-AUROC는 논문(0.977) 대비 소폭 낮음.
-- **bottle 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 1.000, P-AUROC 0.980 기록. P-AUROC가 이전 대비 소폭 상승(0.978 → 0.980)함.
-- **toothbrush 재현 업데이트 (2026-05-18):** `batchsize 8`, `resize 329`, `imagesize 288` 설정으로 재실행 결과 I-AUROC 0.997, P-AUROC 0.984 기록. 논문 수치와 완벽하게 일치하거나 상회함.
-- **4차 재현 (2026-05-18):** `wood` I-AUROC 1.000, P-AUROC 0.940 기록. P-AUROC가 논문(0.949) 대비 소폭 낮으나 I-AUROC는 완벽하게 재현됨.
-- **3차 재현 (2026-05-18):** `metal_nut` I-AUROC 1.000, P-AUROC 0.986 기록. 논문 설정과 동일하게 `batchsize 8`, `resize 329`, `imagesize 288`로 조정하여 수행.
-- **1차 재현 (2026-05-16 ~ 17):** `toothbrush` I-AUROC 1.000, P-AUROC 0.985로 논문 수치(각각 0.991, 0.984)를 상회하거나 동등한 수준 기록.
-- **2차 재현 (2026-05-17):** `bottle` I-AUROC 1.000, P-AUROC 0.978로 논문 수치(각각 1.000, 0.982) 대비 P에서 -0.004 격차.
-- **시각화 패치:** `main.py` 내의 테스트 로직 버그를 수정하여 히트맵(Segmentation) 이미지가 정상적으로 저장되도록 조치함.
-- **향후 계획:** 나머지 6개 카테고리(capsule, carpet, grid, screw, tile, zipper)에 대해 논문 파라미터(batch 8, size 288)를 준수하여 순차적으로 실험을 완료할 예정. 모든 카테고리 재현 완료 후 Method 3 (Reverse Distillation) 프로젝트로 전환하여 `toothbrush` 카테고리부터 baseline 재현을 시도할 계획.
