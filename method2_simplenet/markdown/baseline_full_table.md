@@ -2,7 +2,7 @@
 
 - commit: `69f3444`
 - sh / notebook: `method2_simplenet/source/simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/baseline_screw.csv` (15 categories planned)
+- csv: `method2_simplenet/source/results/baseline_zipper.csv` (15 categories planned)
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.10.0+cu128
 > **Settings:** SimpleNet (WideResNet50, layers 2+3, patchsize 3, meta_epochs 40, gan_epochs 4)
@@ -27,13 +27,14 @@
 | toothbrush | 0.997 | 0.991 | +0.006 | 0.984 | 0.984 | +0.000 | Done |
 | transistor | 1.000 | 1.000 | +0.000 | 0.969 | 0.977 | -0.008 | Done |
 | wood | 1.000 | 0.992 | +0.008 | 0.940 | 0.949 | -0.009 | Done |
-| zipper | - | 0.998 | - | - | 0.991 | - | Planning |
-| **Mean** | **0.994** | **0.996** | **-0.002** | **0.977** | **0.981** | **-0.004** | (13/15) |
+| zipper | 1.000 | 0.998 | +0.002 | 0.980 | 0.991 | -0.011 | Done |
+| **Mean** | **0.995** | **0.996** | **-0.001** | **0.977** | **0.981** | **-0.004** | (14/15) |
 
 *Δ = Repro - Paper. (Paper values are based on WRN50 backbone results from the original paper)*
 
 ## 2. 주요 관찰 사항 (Summary)
 
+- **14차 재현 (2026-05-19):** `zipper` I-AUROC 1.000, P-AUROC 0.980 기록. I-AUROC는 논문(0.998)을 상회하며 완벽하게 재현되었고, P-AUROC는 논문(0.991) 대비 소폭 낮으나 우수한 성능을 보임.
 - **13차 재현 (2026-05-19):** `screw` I-AUROC 0.975, P-AUROC 0.988 기록. 논문 수치(각각 0.992, 0.996) 대비 소폭 낮으나 전반적인 경향성은 유지됨.
 - **12차 재현 (2026-05-19):** `capsule` I-AUROC 0.976, P-AUROC 0.988 기록. I-AUROC가 논문(0.985) 대비 소폭 낮으나 P-AUROC는 논문(0.990)과 거의 동일한 수준으로 성공적으로 재현됨.
 - **11차 재현 (2026-05-19):** `grid` I-AUROC 0.998, P-AUROC 0.981 기록. 논문 수치(각각 0.984, 0.983) 대비 I-AUROC에서 +0.014 높은 성능을 보이며 성공적으로 재현됨.
