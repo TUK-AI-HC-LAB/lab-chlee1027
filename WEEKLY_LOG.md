@@ -15,7 +15,7 @@
   - 시각화: `main.py` 버그 패치 후 히트맵 생성 성공 (노트북 내 출력 확인)
   - 노트북: `method2_simplenet/source/simplenet_colab.ipynb` (실행 결과 포함 업데이트)
   - 결과 csv: `method2_simplenet/source/results/baseline_toothbrush.csv` (5/16, 5/17 통합), `baseline_bottle.csv`
-  - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) (현재 2/15)
+  - 통합 테이블: [`method2_simplenet/markdown/baseline_full_table.md`](method2_simplenet/markdown/baseline_full_table.md) (이 시점 2/15 → 이후 15/15 완결)
   - 수정 사항 3건: `metrics.py` (pandas 호환), `main.py` (시각화 활성화), `simplenet_colab.ipynb` (자동 실행 셀 + 결과 수직 나열)
 - [x] **SimpleNet 3~11차 확장 재현 수행 (2026-05-18 ~ 19)**
   - 5/18 (3~9차): `metal_nut`, `wood`, `transistor`, `cable`, `hazelnut`, `leather` 등 7개 카테고리 추가 완료
@@ -33,10 +33,9 @@
 - `pill`, `metal_nut` 분석 보고서 최종 완결
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **SimpleNet 확장 및 검증**
-  - MVTec AD 전체 카테고리(15개)로 확장 재현 실험 수행
-  - PatchCore 결과와 성능 비교표 초안 작성
-  - SimpleNet의 특이사항(노이즈 투입 로직 등) 분석 보고서 작성 시작
+- **SimpleNet ↔ PatchCore 비교 분석** — 15개 카테고리 결과를 나란히 둔 비교표 + 분석 노트 `method2_simplenet/markdown/simplenet_vs_patchcore.md` (특히 pill·metal_nut에서 SimpleNet 우위 분석)
+- **SimpleNet 노트북 → 셸 스크립트화** — `method2_simplenet/source/run_baseline.sh` (CATEGORY 환경변수), 재현 출처 commit/sh/csv 3줄 완성
+- **method3_RD 실험 착수** — upstream(`hqucl/Reverse-Distillation`) 코드 분석 + bottle·toothbrush 우선 baseline 실행
 
 ---
 

@@ -77,16 +77,16 @@ image → Feature Extractor → Feature Adaptor → Discriminator → anomaly sc
 
 ## 본 재현 진행 상황
 
-### 1·2차 재현 — toothbrush, bottle (2026-05-16 ~ 17, Colab T4)
+### MVTec AD 전 카테고리(15/15) 재현 완료 (2026-05-16 ~ 19, Colab T4)
 
-upstream **[DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet)** 사용. 5/16 1차 실행 후 시각화 미생성 이슈를 발견해 5/17에 `main.py` 패치 + 재실행. 자세한 수정 내역은 [`../source/README.md`](../source/README.md) "수정 내역" 섹션.
+upstream **[DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet)** 사용. 5/16 toothbrush 1차 실행 → 시각화 미생성 이슈 발견 → 5/17 `main.py` 패치 + 재실행 → 5/18~19 논문 동일 파라미터로 전 카테고리 확장. 자세한 수정 내역은 [`../source/README.md`](../source/README.md) "수정 내역" 섹션.
 
 **수정 3건**
 1. `metrics.py` — pandas 2.0+ 호환 (`df.append()` → `df.loc[len(df)] = ...`)
 2. `main.py` — 주석 처리된 `test()` 호출 활성화 + `train()` 완료 후 자동 시각화
 3. `simplenet_colab.ipynb` — 위 패치들을 자동 실행 셀 + 결과 이미지 수직 나열 출력 셀 추가
 
-**하이퍼파라미터** (논문 권장 설정 기준, 5/17 최종 실행 기준)
+**하이퍼파라미터** (5/18~19 전 카테고리 — 논문 동일 설정)
 
 | 항목 | 값 |
 |---|---|
@@ -100,30 +100,35 @@ upstream **[DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet)** 사용.
 | dsc_hidden / dsc_layers | 1024 / 2 |
 | dsc_margin | 0.5 |
 | pre_proj | 1 |
-| batch_size | 4 (5/16 1차는 8) |
-| resize / imagesize | 256 / 224 |
+| batch_size | 8 |
+| **resize / imagesize** | **329 / 288 (논문 설정)** |
 | seed | 0 |
 
-**결과**
+> 초기 toothbrush 1·2차(5/16~17)는 resize 256/224, batch 4로 실행. 5/18부터 논문 동일 설정(329/288, batch 8)으로 통일.
 
-| 카테고리 | 날짜 | I-AUROC | Full P-AUROC | Anomaly P-AUROC | csv |
-|---|---|---|---|---|---|
-| toothbrush (1차) | 5/16 | 1.000 | 0.983 | 0.904 | `../source/results/baseline_toothbrush.csv` (row 1) |
-| **toothbrush (패치 후)** | 5/17 | **1.000** | **0.985** | **0.915** | `../source/results/baseline_toothbrush.csv` (row 2) |
-| **bottle** | 5/17 | **1.000** | **0.978** | **0.915** | `../source/results/baseline_bottle.csv` |
+**결과 요약** (전체 표: [`baseline_full_table.md`](baseline_full_table.md))
+
+| 지표 | 재현 평균 | 논문 평균 | Δ |
+|---|---|---|---|
+| I-AUROC | **0.995** | 0.996 | -0.001 |
+| Full P-AUROC | **0.980** | 0.981 | -0.001 |
+
+- 15개 전 카테고리 모두 Done, 평균이 논문 수치와 ±0.001 — **재현 성공**
+- 9개 카테고리에서 I-AUROC ≥ 0.999 (bottle·leather·metal_nut·transistor·wood·zipper 등 1.000)
 
 **관찰**
-- toothbrush·bottle 모두 I-AUROC **1.000** — PatchCore가 saturating한 카테고리들에서 SimpleNet도 동일하게 saturating
-- 시각화 패치 후 toothbrush의 P-AUROC가 소폭 상승(0.983→0.985, 0.904→0.915). 메트릭 자체보다도 **결과 히트맵을 눈으로 확인**할 수 있게 된 게 큰 진전
-- bottle의 Full P-AUROC 0.978은 toothbrush(0.985) 대비 약간 낮음 — Anomaly P-AUROC는 동일(0.915). 카테고리 특성 차이 가능성, 추가 카테고리 확장에서 패턴 확인 필요
-- upstream 코드는 pandas API + 시각화 호출 빠진 점 외엔 Colab에서 그대로 실행 가능
+- 평균 I-AUROC 0.995로 논문(0.996)과 거의 일치 — SimpleNet baseline 신뢰성 확보
+- 편차가 큰 항목: `screw`(I -0.017), `capsule`(I -0.009) — Gaussian noise 투입 + Discriminator(GAN) 학습의 확률적 요소(stochasticity)에 기인하는 것으로 분석
+- Anomaly Pixel AUROC는 카테고리 편차가 큼(`hazelnut` 0.836 ~ `leather` 0.966) — localization 난이도가 카테고리 특성에 민감
+- PatchCore가 격차를 보였던 `pill`(P +0.009), `metal_nut`(P +0.005)에서 SimpleNet은 오히려 논문 상회 — method 간 비교 분석 흥미로운 지점
 
 ### 다음 단계
 
-1. 카테고리 확장 — method1과 동일하게 leather, pill, metal_nut → 15개 전 카테고리
+1. ~~카테고리 확장 (15개)~~ → **완료**
 2. 노트북 → 셸 스크립트화 (`run_baseline.sh`, CATEGORY 환경변수)
-3. PatchCore baseline과 직접 비교 (같은 카테고리·같은 백본·같은 입력 크기) — 특히 PatchCore가 격차를 보였던 pill, metal_nut에서 SimpleNet 거동 관심
+3. PatchCore baseline과 직접 비교 — 특히 PatchCore가 격차를 보였던 pill, metal_nut에서 SimpleNet 우위 확인
 4. 비교 분석 노트 작성 — `simplenet_vs_patchcore.md` (예정)
 
 > 실행 가이드: [`../source/README.md`](../source/README.md)
-> 1차 노트북: [`../source/simplenet_colab.ipynb`](../source/simplenet_colab.ipynb)
+> 노트북: [`../source/simplenet_colab.ipynb`](../source/simplenet_colab.ipynb)
+> 통합 결과: [`baseline_full_table.md`](baseline_full_table.md)
