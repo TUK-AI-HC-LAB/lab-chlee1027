@@ -125,9 +125,9 @@ upstream **[DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet)** 사용.
 ### 다음 단계
 
 1. ~~카테고리 확장 (15개)~~ → **완료**
-2. 노트북 → 셸 스크립트화 (`run_baseline.sh`, CATEGORY 환경변수)
+2. ~~노트북 → 셸 스크립트화 (`run_baseline.sh`, CATEGORY 환경변수)~~ → **완료** ([`../source/run_baseline.sh`](../source/run_baseline.sh))
 3. PatchCore baseline과 직접 비교 — 특히 PatchCore가 격차를 보였던 pill, metal_nut에서 SimpleNet 우위 확인
-4. 비교 분석 노트 작성 — `simplenet_vs_patchcore.md` (예정)
+4. ~~비교 분석 노트 작성 — `simplenet_vs_patchcore.md`~~ → **완료** ([`simplenet_vs_patchcore.md`](simplenet_vs_patchcore.md))
 
 > 실행 가이드: [`../source/README.md`](../source/README.md)
 > 노트북: [`../source/simplenet_colab.ipynb`](../source/simplenet_colab.ipynb)
