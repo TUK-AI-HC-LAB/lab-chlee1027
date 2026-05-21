@@ -1,40 +1,45 @@
 # Reverse Distillation (RD) Baseline Reproduction Results (MVTec AD)
 
-- commit: `8286d39`
-- sh / notebook: `method3_RD/source/run_baseline.sh`
-- csv: `method3_RD/source/results/ (12/15 완료: toothbrush, screw, tile, grid, carpet, leather, metal_nut, transistor, cable, capsule, wood, zipper)`
+- commit: `cc4d2e3`
+- sh / notebook: `method3_RD/source/run_baseline.sh` / `rd_colab.ipynb`
+- csv: `method3_RD/source/results/ (13/15 완료: bottle, toothbrush, screw, tile, grid, carpet, leather, metal_nut, transistor, cable, capsule, wood, zipper)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
-> **Settings:** RD (ResNet18/WideResNet50 backbone, T-S distillation)
-> **Paper:** Deng et al. 2022 (Reverse Distillation)
+> **Settings:** RD (WideResNet50 Teacher-Student distillation, img 256, batch 16, lr 0.005, epochs 200)
+> **Paper:** Deng et al. 2022 (Reverse Distillation) — Table 1(I-AUROC) / Table 2(AL-AUROC), Ours·WResNet50·256 기준
 
 ## 1. Summary Table (15 Categories)
 
 | Category | I-AUROC (Repro) | I-AUROC (Paper) | Δ (I) | P-AUROC (Repro) | P-AUROC (Paper) | Δ (P) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| bottle | 0.996 | 0.998 | -0.002 | 0.955 | 0.985 | -0.030 | Done |
-| cable | 0.959 | 0.940 | +0.019 | 0.972 | 0.864 | +0.108 | Done |
-| capsule | 0.972 | 0.863 | +0.109 | 0.987 | 0.981 | +0.006 | Done |
+| bottle | 0.996 | 1.000 | -0.004 | 0.955 | 0.987 | -0.032 | Done |
+| cable | 0.959 | 0.950 | +0.009 | 0.972 | 0.974 | -0.002 | Done |
+| capsule | 0.972 | 0.963 | +0.009 | 0.987 | 0.987 | +0.000 | Done |
 | carpet | 0.990 | 0.989 | +0.001 | 0.989 | 0.989 | +0.000 | Done |
-| grid | 1.000 | 0.961 | +0.039 | 0.993 | 0.975 | +0.018 | Done |
-| hazelnut | - | 0.992 | - | - | 0.982 | - | Planning |
-| leather | 1.000 | 0.902 | +0.098 | 0.994 | 0.992 | +0.002 | Done |
-| metal_nut | 1.000 | 0.969 | +0.031 | 0.974 | 0.941 | +0.033 | Done |
-| pill | - | 0.938 | - | - | 0.965 | - | Planning |
-| screw | 0.986 | 0.871 | +0.115 | 0.996 | 0.959 | +0.037 | Done |
-| tile | 0.995 | 0.940 | +0.055 | 0.955 | 0.925 | +0.030 | Done |
-| toothbrush | 0.994 | 0.944 | +0.050 | 0.991 | 0.981 | +0.010 | Done |
-| transistor | 0.970 | 0.913 | +0.057 | 0.928 | 0.825 | +0.103 | Done |
-| wood | 1.000 | 0.987 | +0.013 | 0.987 | 0.935 | +0.052 | Done |
-| zipper | 0.984 | 0.939 | +0.045 | 0.985 | 0.963 | +0.022 | Done |
-| **Mean** | **0.988** | **0.941** | **+0.047** | **0.977** | **0.947** | **+0.030** | (13/15) |
+| grid | 1.000 | 1.000 | +0.000 | 0.993 | 0.993 | +0.000 | Done |
+| hazelnut | - | 0.999 | - | - | 0.989 | - | Planning |
+| leather | 1.000 | 1.000 | +0.000 | 0.994 | 0.994 | +0.000 | Done |
+| metal_nut | 1.000 | 1.000 | +0.000 | 0.974 | 0.973 | +0.001 | Done |
+| pill | - | 0.966 | - | - | 0.982 | - | Planning |
+| screw | 0.986 | 0.970 | +0.016 | 0.996 | 0.996 | +0.000 | Done |
+| tile | 0.995 | 0.993 | +0.002 | 0.955 | 0.956 | -0.001 | Done |
+| toothbrush | 0.994 | 0.995 | -0.001 | 0.991 | 0.991 | +0.000 | Done |
+| transistor | 0.970 | 0.967 | +0.003 | 0.928 | 0.925 | +0.003 | Done |
+| wood | 1.000 | 0.992 | +0.008 | 0.987 | 0.953 | +0.034 | Done |
+| zipper | 0.984 | 0.985 | -0.001 | 0.985 | 0.982 | +0.003 | Done |
+| **Mean (13개)** | **0.988** | **0.985** | **+0.003** | **0.977** | **0.977** | **+0.000** | (13/15) |
 
-*Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
+*Δ = Repro - Paper. (Paper: Deng 2022 Table 1 I-AUROC / Table 2 AL-AUROC, "Ours" WResNet50·256 resolution)*
+
+> ✅ **논문 대조 완료 (2026-05-21):** 원논문 PDF의 Table 1·2에서 "Ours(WResNet50, 256)" 값을 직접 전사하여 paper 컬럼을 정정함. 재현 평균(I 0.988 / P 0.977)이 논문 평균(I 0.985 / P 0.977)과 ΔI +0.003, ΔP ±0.000으로 **거의 완벽히 일치** — 재현 성공. (이전 버전 paper 컬럼은 다른 벤치마크 값이 잘못 들어가 있었음)
 
 ## 2. 주요 관찰 사항
 
-- **실험 준비:** Method 3 (RD) 재현을 위한 구조를 설정을 완료했습니다.
-- **우선 순위:** `toothbrush` 카테고리를 첫 번째 타겟으로 설정하여 재현성을 검증할 예정입니다.
+- **13/15 재현 완료:** bottle, cable, capsule, carpet, grid, leather, metal_nut, screw, tile, toothbrush, transistor, wood, zipper. 잔여: hazelnut, pill.
+- **재현 정확도:** 재현 평균 I-AUROC 0.988 / P-AUROC 0.977이 논문(0.985 / 0.977)과 ±0.003 이내. 대부분 카테고리가 Δ ±0.01 내로 정확히 재현됨.
+- **카테고리별 특징:** grid·leather·metal_nut·wood에서 I-AUROC 1.000 달성. 반면 cable(0.959)·transistor(0.970)는 상대적으로 낮음(논문도 동일 경향: cable 0.950, transistor 0.967).
+- **편차 큰 항목:** `wood` P-AUROC가 논문(0.953) 대비 +0.034 높고, `bottle` P-AUROC는 -0.032 낮음 — 그 외는 사실상 논문과 동일.
+- **3-way 비교:** PatchCore·SimpleNet과의 직접 비교는 [`rd_vs_patchcore_simplenet.md`](rd_vs_patchcore_simplenet.md) 참조.
 
 ## 3. 시각화 결과 (Visualization)
 
@@ -45,6 +50,3 @@
 
 ![repro_result_metal_nut](images/repro_result_metal_nut.png)
 *Figure 2: RD Reproduction - Metal Nut Sample*
-
-![repro_result_toothbrush](images/repro_result_toothbrush.png)
-*Figure 3: RD Reproduction - Toothbrush Sample (Pending)*
