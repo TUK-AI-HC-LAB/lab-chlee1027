@@ -2,7 +2,7 @@
 
 - commit: `[커밋해시]`
 - sh / notebook: `method3_RD/source/run_baseline.sh`
-- csv: `method3_RD/source/results/ (15 categories)`
+- csv: `method3_RD/source/results/baseline_toothbrush_0521.csv` (1/15)
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (ResNet18/WideResNet50 backbone, T-S distillation)
