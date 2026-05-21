@@ -1,0 +1,2 @@
+date,category,backbone,img_size,batch_size,lr,epochs,instance_auroc,full_pixel_auroc,anomaly_pixel_aupro,environment,notes
+2026-05-21,capsule,wideresnet50,256,16,0.005,200,0.972,0.987,0.957,Colab T4 / hq-deng RD4AD,capsule 카테고리 재현 완료 (논문 수치 상회)
