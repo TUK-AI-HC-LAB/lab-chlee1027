@@ -13,7 +13,31 @@ MVTec AD **14/15 카테고리** 재현 완료 (hazelnut 진행 중).
 
 *RD의 3번째 픽셀 지표는 AUPRO(Per-Region Overlap)이며, 카테고리별 상세는 [baseline_full_table.md](../markdown/baseline_full_table.md) 참조.*
 
-## 🔍 집중 분석 및 결과 보고
+---
+
+## 🏛 Architecture & Mechanism
+
+### [Method 3: Reverse Distillation] - T-S Reconstruction Based Anomaly Detection
+> **핵심 특징:** OCBE 병목 구조를 통해 특징을 압축 후 복원하며, 정상과 다른 '이상치 복원 실패' 오차를 감지하는 비대칭 Teacher-Student 구조
+
+```mermaid
+graph LR
+    Input[Input Image] --> Teacher[Teacher Encoder]
+    Teacher --> OCBE[One-Class Bottleneck Embedding]
+    OCBE --> Student[Student Decoder]
+    Student --> Recon[Reconstructed Features]
+    
+    Error{Cosine Similarity}
+    Teacher -- Original Feat --> Error
+    Recon -- Restored Feat --> Error
+    Error --> Score[Anomaly Map]
+```
+
+*   **Asymmetric Structure:** Encoder(Teacher)와 Decoder(Student)의 비대칭 구조를 통해 Student가 정상 패턴에만 과적합되도록 유도.
+*   **OCBE (Bottleneck):** 특징 압축 과정에서 이상치 노이즈를 필터링하여 복원 오차를 극대화(AUPRO 기반 텍스처 정밀화).
+
+---
+
 
 1. **[baseline_analysis.md](../markdown/baseline_analysis.md):** 12/15 카테고리 재현 분석 (개요/환경/종합 결과/관찰/결론)
 2. **[baseline_full_table.md](../markdown/baseline_full_table.md):** 카테고리별 재현 결과표 + 시각화
