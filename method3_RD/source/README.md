@@ -4,12 +4,12 @@ Reverse Distillation (Deng et al. 2022, *Anomaly Detection via Reverse Distillat
 
 ## 📊 재현 결과 요약 (2026-05-21)
 
-MVTec AD **13/15 카테고리** 재현 완료 (hazelnut·pill 진행 중).
+MVTec AD **14/15 카테고리** 재현 완료 (hazelnut 진행 중).
 
-| Metric | Repro (Mean, 13개) | Status |
+| Metric | Repro (Mean, 14개) | Status |
 | :--- | :---: | :---: |
-| **I-AUROC** | **0.988** | 🔄 13/15 |
-| **Full P-AUROC** | **0.977** | 🔄 13/15 |
+| **I-AUROC** | **0.987** | 🔄 14/15 |
+| **Full P-AUROC** | **0.978** | 🔄 14/15 |
 
 *RD의 3번째 픽셀 지표는 AUPRO(Per-Region Overlap)이며, 카테고리별 상세는 [baseline_full_table.md](../markdown/baseline_full_table.md) 참조.*
 
@@ -70,14 +70,14 @@ CATEGORY=leather MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 - `source/run_baseline.sh`: 카테고리별 실험 자동화 쉘 스크립트 (upstream clone + 패치 + 단일 카테고리 실행).
 - `source/rd_colab.ipynb`: 실험 및 시각화 검증용 Colab 노트.
 - `source/requirements.txt`: Colab T4 환경 패키지 스냅샷.
-- `source/results/`: 재현 결과 CSV (현재 13개 카테고리).
+- csv: `method3_RD/source/results/` (현재 14개 카테고리).
 - `markdown/`: 논문 요약, 재현 분석, 결과 테이블, 3-way 비교, 시각화.
 
 ## 📌 재현 출처 (가이드 형식 — commit/sh/csv 3줄)
 
-### MVTec AD 13/15 카테고리 (진행 중)
+### MVTec AD 14/15 카테고리 (진행 중)
 
-- commit: `8286d39`
+- commit: `cc4d2e3`
 - sh / 노트북: `method3_RD/source/run_baseline.sh` (CATEGORY 환경변수) / `rd_colab.ipynb`
-- csv: `method3_RD/source/results/baseline_<category>_0521.csv` (13개)
+- csv: `method3_RD/source/results/baseline_<category>_0521.csv` (14개)
 - 집계표: [`method3_RD/markdown/baseline_full_table.md`](../markdown/baseline_full_table.md)

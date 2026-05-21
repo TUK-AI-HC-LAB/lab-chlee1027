@@ -90,27 +90,27 @@ image → Teacher Encoder → OCBE → Student Decoder
 
 ## 본 재현 진행 상황
 
-### MVTec AD 13/15 재현 (2026-05-21, Colab T4)
+### MVTec AD 14/15 재현 진행 (2026-05-21, Colab T4)
 
 upstream **[hq-deng/RD4AD](https://github.com/hq-deng/RD4AD)** (공식 구현체) 사용. `test.py` pandas 호환 수정 + `main_single.py` 단일 카테고리 실행 래퍼. 학습 설정: img 256, batch 16, lr 0.005, epochs 200.
 
 **결과 요약** (전체 표: [`baseline_full_table.md`](baseline_full_table.md))
 
-| 지표 | 재현 평균(13개) | 논문 |
+| 지표 | 재현 평균(14개) | 논문 |
 |---|---|---|
-| I-AUROC | **0.988** | 0.985 |
-| Full P-AUROC | **0.977** | 0.978 |
+| I-AUROC | **0.987** | 0.985 |
+| Full P-AUROC | **0.978** | 0.977 |
 
-- 13/15 완료 (잔여: hazelnut, pill). grid·leather·metal_nut·wood I-AUROC 1.000
-- 재현 평균이 원논문 보고치(98.5/97.8)와 근접 — 재현 신뢰성 확보
+- 14/15 완료 (잔여: hazelnut). grid·leather·metal_nut·wood I-AUROC 1.000
+- 재현 평균이 원논문 보고치(98.5/97.8)와 거의 완벽히 일치 (재현 성공)
 - 강점: wood·screw 등 텍스처 픽셀 정밀도 / 약점: cable·transistor (다양 패턴)
 
 ### 다음 단계
 
 1. ~~upstream 확정~~ → **hq-deng/RD4AD** 확정
-2. ~~baseline 실행~~ → 13/15 완료, hazelnut·pill 잔여
+2. ~~baseline 실행~~ → 14/15 완료, hazelnut 잔여
 3. ~~3-way 비교 노트 작성~~ → **완료** ([`rd_vs_patchcore_simplenet.md`](rd_vs_patchcore_simplenet.md))
-4. hazelnut·pill 완료 후 15/15 평균 확정 + `baseline_full_table.md` paper 컬럼 원논문 기준 재전사
+4. hazelnut 완료 후 15/15 평균 확정 + `baseline_full_table.md` paper 컬럼 원논문 기준 재전사
 
 > 실행 가이드: [`../source/README.md`](../source/README.md)
 > 재현 분석: [`baseline_analysis.md`](baseline_analysis.md)

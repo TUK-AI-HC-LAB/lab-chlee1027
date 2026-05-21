@@ -2,7 +2,7 @@
 
 - commit: `cc4d2e3`
 - sh / notebook: `method3_RD/source/run_baseline.sh` / `rd_colab.ipynb`
-- csv: `method3_RD/source/results/ (13/15 완료: bottle, toothbrush, screw, tile, grid, carpet, leather, metal_nut, transistor, cable, capsule, wood, zipper)`
+- csv: `method3_RD/source/results/ (14/15 완료: bottle, toothbrush, screw, tile, grid, carpet, leather, metal_nut, pill, transistor, cable, capsule, wood, zipper)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (WideResNet50 Teacher-Student distillation, img 256, batch 16, lr 0.005, epochs 200)
@@ -31,12 +31,12 @@
 
 *Δ = Repro - Paper. (Paper: Deng 2022 Table 1 I-AUROC / Table 2 AL-AUROC, "Ours" WResNet50·256 resolution)*
 
-> ✅ **논문 대조 완료 (2026-05-21):** 원논문 PDF의 Table 1·2에서 "Ours(WResNet50, 256)" 값을 직접 전사하여 paper 컬럼을 정정함. 재현 평균(I 0.988 / P 0.977)이 논문 평균(I 0.985 / P 0.977)과 ΔI +0.003, ΔP ±0.000으로 **거의 완벽히 일치** — 재현 성공. (이전 버전 paper 컬럼은 다른 벤치마크 값이 잘못 들어가 있었음)
+> ✅ **논문 대조 완료 (2026-05-21):** 원논문 PDF의 Table 1·2에서 "Ours(WResNet50, 256)" 값을 직접 전사하여 paper 컬럼을 정정함. 재현 평균(I 0.987 / P 0.978)이 논문 평균(I 0.985 / P 0.977)과 ΔI +0.002, ΔP +0.001로 **거의 완벽히 일치** — 재현 성공. (이전 버전 paper 컬럼은 다른 벤치마크 값이 잘못 들어가 있었음)
 
 ## 2. 주요 관찰 사항
 
-- **13/15 재현 완료:** bottle, cable, capsule, carpet, grid, leather, metal_nut, screw, tile, toothbrush, transistor, wood, zipper. 잔여: hazelnut, pill.
-- **재현 정확도:** 재현 평균 I-AUROC 0.988 / P-AUROC 0.977이 논문(0.985 / 0.977)과 ±0.003 이내. 대부분 카테고리가 Δ ±0.01 내로 정확히 재현됨.
+- **14/15 재현 완료:** bottle, cable, capsule, carpet, grid, leather, metal_nut, pill, screw, tile, toothbrush, transistor, wood, zipper. 잔여: hazelnut.
+- **재현 정확도:** 재현 평균 I-AUROC 0.987 / P-AUROC 0.978이 논문(0.985 / 0.977)과 ±0.002 이내. 대부분 카테고리가 Δ ±0.01 내로 정확히 재현됨.
 - **카테고리별 특징:** grid·leather·metal_nut·wood에서 I-AUROC 1.000 달성. 반면 cable(0.959)·transistor(0.970)는 상대적으로 낮음(논문도 동일 경향: cable 0.950, transistor 0.967).
 - **편차 큰 항목:** `wood` P-AUROC가 논문(0.953) 대비 +0.034 높고, `bottle` P-AUROC는 -0.032 낮음 — 그 외는 사실상 논문과 동일.
 - **3-way 비교:** PatchCore·SimpleNet과의 직접 비교는 [`rd_vs_patchcore_simplenet.md`](rd_vs_patchcore_simplenet.md) 참조.
