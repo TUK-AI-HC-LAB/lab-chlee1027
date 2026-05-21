@@ -19,7 +19,7 @@
 | grid | 1.000 | 0.961 | +0.039 | 0.993 | 0.975 | +0.018 | Done |
 | hazelnut | - | 0.992 | - | - | 0.982 | - | Planning |
 | leather | 1.000 | 0.902 | +0.098 | 0.994 | 0.992 | +0.002 | Done |
-| metal_nut | - | 0.969 | - | - | 0.941 | - | Planning |
+| metal_nut | 1.000 | 0.969 | +0.031 | 0.974 | 0.941 | +0.033 | Done |
 | pill | - | 0.938 | - | - | 0.965 | - | Planning |
 | screw | 0.986 | 0.871 | +0.115 | 0.996 | 0.959 | +0.037 | Done |
 | tile | 0.995 | 0.940 | +0.055 | 0.955 | 0.925 | +0.030 | Done |
@@ -27,7 +27,7 @@
 | transistor | - | 0.913 | - | - | 0.825 | - | Planning |
 | wood | - | 0.987 | - | - | 0.935 | - | Planning |
 | zipper | - | 0.939 | - | - | 0.963 | - | Planning |
-| **Mean** | **0.994** | **0.941** | **+0.053** | **0.986** | **0.947** | **+0.039** | (6/15) |
+| **Mean** | **0.995** | **0.941** | **+0.054** | **0.985** | **0.947** | **+0.038** | (7/15) |
 
 *Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
 
