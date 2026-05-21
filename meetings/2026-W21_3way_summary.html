@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-W21 3-way 비교 요약</title>
+<style>
+  :root{
+    --pc:#2563eb; --sn:#16a34a; --rd:#d97706;
+    --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc; --hl:#fef9c3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Segoe UI','Malgun Gothic',sans-serif;
+    background:var(--bg); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    padding:2.5vh 2.5vw;
+  }
+  .slide{
+    width:100%; max-width:1180px; aspect-ratio:16/9; background:#fff;
+    border:1px solid var(--line); border-radius:16px;
+    box-shadow:0 10px 40px rgba(15,23,42,.08);
+    padding:3.0vh 3.2vw; display:flex; flex-direction:column;
+  }
+  header{border-bottom:2px solid var(--line); padding-bottom:1.4vh; margin-bottom:1.8vh;}
+  h1{font-size:clamp(20px,2.5vw,30px); font-weight:800; letter-spacing:-.5px;}
+  h1 .sub{color:var(--muted); font-weight:600; font-size:.62em;}
+  .meta{color:var(--muted); font-size:clamp(11px,1.05vw,14px); margin-top:.4vh;}
+  .body{flex:1; display:grid; grid-template-columns:1.15fr 1fr; gap:2.4vw;}
+  .col-title{font-size:clamp(12px,1.15vw,15px); font-weight:800; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.5px; margin-bottom:1.0vh;}
+  table{width:100%; border-collapse:collapse; font-size:clamp(12px,1.25vw,17px);}
+  th,td{padding:.85vh .6vw; text-align:center; border-bottom:1px solid var(--line);}
+  th:first-child,td:first-child{text-align:left; color:var(--muted); font-weight:600;}
+  thead th{font-weight:800; font-size:.92em;}
+  .pc{color:var(--pc);} .sn{color:var(--sn);} .rd{color:var(--rd);}
+  td.best{background:var(--hl); font-weight:800; border-radius:6px;}
+  .note{font-size:clamp(10px,.95vw,12.5px); color:var(--muted); margin-top:1.0vh; line-height:1.5;}
+  .comp{display:flex; flex-direction:column; gap:1.1vh;}
+  .card{border:1px solid var(--line); border-left-width:5px; border-radius:10px; padding:1.3vh 1vw;}
+  .card.pcc{border-left-color:var(--pc);}
+  .card.snc{border-left-color:var(--sn);}
+  .card.rdc{border-left-color:var(--rd);}
+  .card .role{font-size:clamp(13px,1.35vw,18px); font-weight:800;}
+  .card .role span{font-weight:600; color:var(--muted); font-size:.72em;}
+  .card .desc{font-size:clamp(11px,1.05vw,14px); color:var(--ink); margin-top:.3vh;}
+  .takeaway{margin-top:1.4vh; background:#0f172a; color:#fff; border-radius:12px;
+    padding:1.5vh 1.4vw; font-size:clamp(13px,1.35vw,18px); font-weight:700; line-height:1.5;}
+  .takeaway b{color:#fde047;}
+  footer{margin-top:1.6vh; display:flex; gap:1vw; align-items:center; flex-wrap:wrap;}
+  .badge{background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;
+    border-radius:999px; padding:.6vh 1vw; font-size:clamp(10px,1vw,13px); font-weight:700;}
+  .fidelity{font-size:clamp(10px,1vw,13px); color:var(--muted);}
+  .fidelity b{color:var(--ink);}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <header>
+      <h1>3-way 비교 <span class="sub">PatchCore · SimpleNet · Reverse Distillation</span></h1>
+      <div class="meta">MVTec AD 재현 · 공통 13개 카테고리 평균 · 2026-W21</div>
+    </header>
+
+    <div class="body">
+      <!-- LEFT: numbers -->
+      <div>
+        <div class="col-title">평균 성능 (공통 13개)</div>
+        <table>
+          <thead>
+            <tr><th>지표</th><th class="pc">PatchCore</th><th class="sn">SimpleNet</th><th class="rd">RD</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>I-AUROC (이미지 탐지)</td><td>0.993</td><td class="best">0.995</td><td>0.988</td></tr>
+            <tr><td>Full P-AUROC (픽셀 위치)</td><td class="best">0.981</td><td>0.977</td><td>0.977</td></tr>
+          </tbody>
+        </table>
+
+        <div class="col-title" style="margin-top:2.2vh;">vs 논문 — 세 method 모두 충실 재현</div>
+        <table>
+          <thead>
+            <tr><th>method</th><th>재현 I</th><th>논문 I</th><th>Δ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pc">PatchCore</td><td>0.992</td><td>0.991</td><td>+0.001</td></tr>
+            <tr><td class="sn">SimpleNet</td><td>0.995</td><td>0.996</td><td>−0.001</td></tr>
+            <tr><td class="rd">RD</td><td>0.988</td><td>0.985</td><td>+0.003</td></tr>
+          </tbody>
+        </table>
+        <div class="note">※ 입력 해상도 차이(PC 224 / SN 288 / RD 256) — 각 method 권장 설정 기준 비교. RD는 13/15 진행(hazelnut·pill 잔여).</div>
+      </div>
+
+      <!-- RIGHT: complementarity -->
+      <div class="comp">
+        <div class="col-title">핵심 — 세 method는 상보적</div>
+        <div class="card snc">
+          <div class="role"><span class="sn">SimpleNet</span> · 이미지 탐지 최강</div>
+          <div class="desc">I-AUROC 0.995. 텍스처(grid·carpet·wood)에서 강세.</div>
+        </div>
+        <div class="card pcc">
+          <div class="role"><span class="pc">PatchCore</span> · 범용 픽셀 정밀도</div>
+          <div class="desc">P-AUROC 0.981, 13개 중 다수 1위. memory bank의 세밀한 공간 정보.</div>
+        </div>
+        <div class="card rdc">
+          <div class="role"><span class="rd">RD</span> · 텍스처 픽셀 정밀도</div>
+          <div class="desc">wood P-AUROC 0.987 (PC 0.951 / SN 0.940 압도). 복원 오차 기반.</div>
+        </div>
+        <div class="takeaway">단일 method가 모든 걸 지배하지 않는다 — <b>카테고리·평가축에 따라 우열이 갈린다.</b></div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="badge">✓ RD 논문 수치 오류를 PDF 대조로 정정 → 충실 재현(Δ+0.003) 확인</span>
+      <span class="fidelity"><b>PatchCore</b> 15/15 · <b>SimpleNet</b> 15/15 · <b>RD</b> 13/15</span>
+    </footer>
+  </div>
+</body>
+</html>
