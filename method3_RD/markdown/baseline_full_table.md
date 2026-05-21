@@ -13,7 +13,7 @@
 | Category | I-AUROC (Repro) | I-AUROC (Paper) | Δ (I) | P-AUROC (Repro) | P-AUROC (Paper) | Δ (P) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | bottle | - | 0.998 | - | - | 0.985 | - | Planning |
-| cable | - | 0.940 | - | - | 0.864 | - | Planning |
+| cable | 0.959 | 0.940 | +0.019 | 0.972 | 0.864 | +0.108 | Done |
 | capsule | - | 0.863 | - | - | 0.981 | - | Planning |
 | carpet | 0.990 | 0.989 | +0.001 | 0.989 | 0.989 | +0.000 | Done |
 | grid | 1.000 | 0.961 | +0.039 | 0.993 | 0.975 | +0.018 | Done |
@@ -27,7 +27,7 @@
 | transistor | 0.970 | 0.913 | +0.057 | 0.928 | 0.825 | +0.103 | Done |
 | wood | - | 0.987 | - | - | 0.935 | - | Planning |
 | zipper | - | 0.939 | - | - | 0.963 | - | Planning |
-| **Mean** | **0.992** | **0.941** | **+0.051** | **0.978** | **0.947** | **+0.031** | (8/15) |
+| **Mean** | **0.988** | **0.941** | **+0.047** | **0.977** | **0.947** | **+0.030** | (9/15) |
 
 *Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
 
