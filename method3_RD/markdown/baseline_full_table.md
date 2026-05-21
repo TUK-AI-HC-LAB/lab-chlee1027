@@ -2,7 +2,7 @@
 
 - commit: `8286d39`
 - sh / notebook: `method3_RD/source/run_baseline.sh`
-- csv: `method3_RD/source/results/ (5/15 완료: toothbrush, screw, tile, grid, carpet)`
+- csv: `method3_RD/source/results/ (12/15 완료: toothbrush, screw, tile, grid, carpet, leather, metal_nut, transistor, cable, capsule, wood, zipper)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (ResNet18/WideResNet50 backbone, T-S distillation)
@@ -38,7 +38,13 @@
 
 ## 3. 시각화 결과 (Visualization)
 
-재현 실험 과정에서 도출된 주요 시각화 결과가 여기에 추가될 예정입니다.
+재현 실험 과정에서 도출된 주요 시각화 결과입니다.
+
+![repro_result_leather](images/repro_result_leather.png)
+*Figure 1: RD Reproduction - Leather Sample*
+
+![repro_result_metal_nut](images/repro_result_metal_nut.png)
+*Figure 2: RD Reproduction - Metal Nut Sample*
 
 ![repro_result_toothbrush](images/repro_result_toothbrush.png)
-*Figure 1: RD Reproduction - Toothbrush Sample (Pending)*
+*Figure 3: RD Reproduction - Toothbrush Sample (Pending)*
