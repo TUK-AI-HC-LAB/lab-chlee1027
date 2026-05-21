@@ -36,8 +36,14 @@ fi
 
 # 3) 실행
 cd "$RD_DIR"
-# hq-deng/RD4AD의 main.py는 기본적으로 모든 카테고리를 순회하거나 특정 설정을 따름.
-# toothbrush만 실행하기 위해 main.py 수정이 필요할 수 있음.
+
+# main.py의 item_list를 현재 CATEGORY로 교체하여 특정 카테고리만 실행 (원본 백업 후 복구)
+echo "[run_baseline] patching main.py to run only: $CATEGORY"
+cp main.py main.py.bak
+sed -i "s/item_list = \[.*\]/item_list = ['$CATEGORY']/" main.py
+
 python main.py
 
-echo "[run_baseline] RD execution completed."
+mv main.py.bak main.py
+
+echo "[run_baseline] RD execution completed for $CATEGORY."
