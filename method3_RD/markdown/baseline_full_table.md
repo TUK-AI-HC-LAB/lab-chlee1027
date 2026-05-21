@@ -23,11 +23,11 @@
 | pill | - | 0.938 | - | - | 0.965 | - | Planning |
 | screw | - | 0.871 | - | - | 0.959 | - | Planning |
 | tile | - | 0.940 | - | - | 0.925 | - | Planning |
-| toothbrush | - | 0.944 | - | - | 0.981 | - | Planning |
+| toothbrush | 0.994 | 0.944 | +0.050 | 0.991 | 0.981 | +0.010 | Done |
 | transistor | - | 0.913 | - | - | 0.825 | - | Planning |
 | wood | - | 0.987 | - | - | 0.935 | - | Planning |
 | zipper | - | 0.939 | - | - | 0.963 | - | Planning |
-| **Mean** | **-** | **0.941** | **-** | **-** | **0.947** | **-** | (0/15) |
+| **Mean** | **0.994** | **0.941** | **+0.053** | **0.991** | **0.947** | **+0.044** | (1/15) |
 
 *Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
 
