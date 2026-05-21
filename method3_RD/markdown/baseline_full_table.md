@@ -2,7 +2,7 @@
 
 - commit: `[커밋해시]`
 - sh / notebook: `method3_RD/source/run_baseline.sh`
-- csv: `method3_RD/source/results/baseline_toothbrush_0521.csv` (1/15)
+- csv: `method3_RD/source/results/ (2/15 완료: toothbrush, screw)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (ResNet18/WideResNet50 backbone, T-S distillation)
@@ -21,13 +21,13 @@
 | leather | - | 0.902 | - | - | 0.992 | - | Planning |
 | metal_nut | - | 0.969 | - | - | 0.941 | - | Planning |
 | pill | - | 0.938 | - | - | 0.965 | - | Planning |
-| screw | - | 0.871 | - | - | 0.959 | - | Planning |
+| screw | 0.986 | 0.871 | +0.115 | 0.996 | 0.959 | +0.037 | Done |
 | tile | - | 0.940 | - | - | 0.925 | - | Planning |
 | toothbrush | 0.994 | 0.944 | +0.050 | 0.991 | 0.981 | +0.010 | Done |
 | transistor | - | 0.913 | - | - | 0.825 | - | Planning |
 | wood | - | 0.987 | - | - | 0.935 | - | Planning |
 | zipper | - | 0.939 | - | - | 0.963 | - | Planning |
-| **Mean** | **0.994** | **0.941** | **+0.053** | **0.991** | **0.947** | **+0.044** | (1/15) |
+| **Mean** | **0.990** | **0.941** | **+0.049** | **0.994** | **0.947** | **+0.047** | (2/15) |
 
 *Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
 
