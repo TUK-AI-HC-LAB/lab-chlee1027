@@ -1,8 +1,8 @@
 # Reverse Distillation (RD) Baseline Reproduction Results (MVTec AD)
 
-- commit: `[커밋해시]`
+- commit: `398380b`
 - sh / notebook: `method3_RD/source/run_baseline.sh`
-- csv: `method3_RD/source/results/ (3/15 완료: toothbrush, screw, tile)`
+- csv: `method3_RD/source/results/ (4/15 완료: toothbrush, screw, tile, grid)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (ResNet18/WideResNet50 backbone, T-S distillation)
@@ -16,7 +16,7 @@
 | cable | - | 0.940 | - | - | 0.864 | - | Planning |
 | capsule | - | 0.863 | - | - | 0.981 | - | Planning |
 | carpet | - | 0.989 | - | - | 0.989 | - | Planning |
-| grid | - | 0.961 | - | - | 0.975 | - | Planning |
+| grid | 1.000 | 0.961 | +0.039 | 0.993 | 0.975 | +0.018 | Done |
 | hazelnut | - | 0.992 | - | - | 0.982 | - | Planning |
 | leather | - | 0.902 | - | - | 0.992 | - | Planning |
 | metal_nut | - | 0.969 | - | - | 0.941 | - | Planning |
@@ -27,7 +27,7 @@
 | transistor | - | 0.913 | - | - | 0.825 | - | Planning |
 | wood | - | 0.987 | - | - | 0.935 | - | Planning |
 | zipper | - | 0.939 | - | - | 0.963 | - | Planning |
-| **Mean** | **0.992** | **0.941** | **+0.051** | **0.981** | **0.947** | **+0.034** | (3/15) |
+| **Mean** | **0.994** | **0.941** | **+0.053** | **0.984** | **0.947** | **+0.037** | (4/15) |
 
 *Δ = Repro - Paper. (Note: Paper values are approximate/based on ResNet18/WideResNet50 as reported in various benchmarks.)*
 
