@@ -8,6 +8,7 @@
 - [x] **SimpleNet 15/15 카테고리 재현 완결** — 평균 I-AUROC 0.995 달성
 - [x] **method3_RD 프로젝트 착수 및 환경 셋업** — requirements.txt 스냅샷 반영 완료
 - [x] **RD baseline 본격 실행 (14/15)** — hazelnut 제외 전 카테고리 완료, 평균 I-AUROC 0.987 / P-AUROC 0.978
+- [x] **RD baseline 완결 (15/15)** — hazelnut 추가 완료 (5/22), 최종 평균 I-AUROC 0.988 / P-AUROC 0.978
 
 ### 이전 미팅 결정 사항 (5/21)
 - RD baseline 본격 실행 (bottle, toothbrush, screw 우선)
