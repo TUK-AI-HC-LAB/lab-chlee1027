@@ -1,0 +1,2 @@
+date,category,backbone,img_size,batch_size,lr,epochs,instance_auroc,full_pixel_auroc,anomaly_pixel_aupro,environment,notes
+2026-05-23,hazelnut,wideresnet50,256,16,0.005,200,1.000,0.989,0.953,Colab T4 / hq-deng RD4AD,hazelnut RD 실험 결과 업데이트 (15/15 완료)

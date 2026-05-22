@@ -1,6 +1,6 @@
 # method4_Dinomaly — 실행 가이드 및 재현 결과
 
-Dinomaly baseline을 MVTec AD에서 재현하기 위한 디렉토리입니다.
+Dinomaly (Guo et al. 2025, *Dinomaly: The Less Is More Philosophy in Multi-Class Unsupervised Anomaly Detection*, CVPR 2025) baseline을 MVTec AD에서 재현하기 위한 디렉토리입니다.
 
 ## 📊 재현 결과 요약
 
@@ -8,8 +8,8 @@ Dinomaly baseline을 MVTec AD에서 재현하기 위한 디렉토리입니다.
 
 | Metric | Repro (Mean) | Paper (Mean) | Status |
 | :--- | :---: | :---: | :---: |
-| **I-AUROC** | — | — | 🔄 진행 중 |
-| **P-AUROC** | — | — | 🔄 진행 중 |
+| **I-AUROC** | — | 0.996 | 🔄 진행 중 |
+| **P-AUROC** | — | 0.984 | 🔄 진행 중 |
 
 *상세 수치는 재현 완료 후 [baseline_full_table.md](../markdown/baseline_full_table.md)에서 확인 가능합니다.*
 
@@ -17,23 +17,31 @@ Dinomaly baseline을 MVTec AD에서 재현하기 위한 디렉토리입니다.
 
 ## 🏛 Architecture & Mechanism
 
-### [Method 4: Dinomaly] - (아키텍처 설명 추가 예정)
-> **핵심 특징:** (논문 분석 후 작성 예정)
+### [Method 4: Dinomaly] - Minimalist Reconstruction Based Anomaly Detection
+> **핵심 특징:** DINOv2 사전학습 ViT Encoder의 중간층 feature를 Dropout 병목 + Linear Attention Decoder로 복원하며, 정상과 다른 '복원 실패' 오차를 감지하는 순수 Transformer 구조. Multi-class 통합 모델.
 
 ```mermaid
 graph LR
-    Input[Input Image] --> Backbone[Backbone]
-    Backbone --> Module[Core Module]
-    Module --> Score[Anomaly Score]
+    Input[Input Image] --> Encoder[ViT Encoder - DINOv2 Frozen]
+    Encoder --> Bottleneck[MLP Bottleneck + Dropout]
+    Bottleneck --> Decoder[ViT Decoder - Linear Attention]
+    Decoder --> Recon[Reconstructed Features]
+    
+    Error{Cosine Distance}
+    Encoder -- Original Feat --> Error
+    Recon -- Restored Feat --> Error
+    Error --> Score[Anomaly Map]
 ```
 
-*   **(아키텍처 상세 설명 — 논문 분석 후 작성 예정)**
+*   **Noisy Bottleneck:** MLP 내장 Dropout(p=0.2)으로 feature를 무작위 마스킹 → denoising 효과로 identity mapping 차단.
+*   **Linear Attention:** Softmax 없이 attention을 분산시켜 동일 위치 정보 전달을 방지, 계산량도 절감.
+*   **Loose Reconstruction:** 다층 feature를 그룹으로 묶어 느슨하게 복원 + hard mining loss로 이미 잘 복원된 영역의 gradient 축소.
 
 ---
 
 ## 🔍 집중 분석 및 결과 보고
 
-1. **[dinomaly_summary.md](../markdown/dinomaly_summary.md):** 논문 요약 (작성 예정)
+1. **[dinomaly_summary.md](../markdown/dinomaly_summary.md):** 논문 요약 + 핵심 구조(Foundation ViT / Noisy Bottleneck / Linear Attention / Loose Reconstruction) + PatchCore·SimpleNet·RD와의 차별점
 
 ---
 
@@ -42,7 +50,7 @@ graph LR
 ### 환경 (Colab T4 기준)
 - Python 3.12, CUDA 12.x
 - PyTorch 2.x (Colab 기본)
-- upstream: (확정 후 기재)
+- upstream: [guojiajeremy/Dinomaly](https://github.com/guojiajeremy/Dinomaly) (공식 구현체)
 
 ### 데이터 준비
 method1~3과 동일한 MVTec AD 구조.
@@ -62,9 +70,11 @@ method1~3과 동일한 MVTec AD 구조.
 CATEGORY=bottle MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 ```
 **스크립트 동작 과정:**
-1. upstream repo를 clone.
+1. upstream [guojiajeremy/Dinomaly](https://github.com/guojiajeremy/Dinomaly)을 clone.
 2. 필요 시 수정사항 적용.
-3. 지정 카테고리에 대해 학습+평가 실행.
+3. 논문 기본 설정(ViT-Base/14, DINOv2-R, resize 448 / crop 392, 10,000 iterations)으로 학습+평가.
+
+> 1차 탐색은 김준아 학생의 fork 기반 노트북으로 진행 예정.
 
 ## 🛠 수정 내역 (upstream 대비)
 
