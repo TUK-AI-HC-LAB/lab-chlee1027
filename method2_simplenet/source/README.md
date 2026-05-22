@@ -37,6 +37,7 @@ graph LR
 
 ---
 
+## 🔍 집중 분석 및 결과 보고
 
 1. **[baseline_analysis.md](../markdown/baseline_analysis.md):** 15개 전 카테고리 재현 분석 (개요/환경/종합 결과/관찰/결론)
 2. **[baseline_full_table.md](../markdown/baseline_full_table.md):** 카테고리별 재현 vs 논문 비교표 + 시각화 결과
