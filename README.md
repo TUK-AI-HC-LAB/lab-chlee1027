@@ -4,7 +4,7 @@
 |---|------|------|------|
 | 1 | [method1_patchcore](method1_patchcore/source/) | Roth et al., 2022, Towards Total Recall in Industrial Anomaly Detection (CVPR 2022, PatchCore) | 재현 완료 (MVTec AD: 15/15 카테고리) |
 | 2 | [method2_simplenet](method2_simplenet/source/) | Liu et al., 2023, SimpleNet: A Simple Network for Image Anomaly Detection and Localization (CVPR 2023) | 재현 완료 (MVTec AD: 15/15 카테고리) |
-| 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022, Anomaly Detection via Reverse Distillation from One-Class Embedding (CVPR 2022, RD) | 재현 진행 중 (MVTec AD: 14/15 카테고리) |
+| 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022, Anomaly Detection via Reverse Distillation from One-Class Embedding (CVPR 2022, RD) | 재현 완료 (MVTec AD: 15/15 카테고리) |
 
 ## 진행 상황 요약
 
@@ -12,7 +12,7 @@
 - **2026-W19 (5/7 미팅)** — PatchCore baseline 재현 (Colab T4). bottle/leather 모두 논문 수치 ±0.005 내 재현. → [meetings/2026-W19_brief.md](meetings/2026-W19_brief.md)
 - **2026-W20 (5/14 미팅)** — **PatchCore 전 카테고리(15개) 재현 완료.** 평균 I-AUROC 0.992 기록. `pill`, `metal_nut` 등 미세 하락 항목에 대한 원인 분석 및 검증 실험 보고서 완결. → [meetings/2026-W20_brief.md](meetings/2026-W20_brief.md)
 - **2026-W21 (5/21 미팅)** — **SimpleNet 전 카테고리(15/15) 재현 완료** + PatchCore 최종 문서화. **method3 Reverse Distillation 착수 14/15 재현 진행 중**, 3-way 비교 문서 작성. → [meetings/2026-W21_brief.md](meetings/2026-W21_brief.md)
-- **2026-W22 (5/28 미팅 예정)** — **Reverse Distillation 전 카테고리(15/15) 완결 및 분석 보고.** method4 Dinomaly 환경 구축 및 1차 검증(bottle). SimpleNet 구조적 약점 분석(screw/capsule) 및 4-way 비교 프레임워크 초안 설계. → [meetings/2026-W22_brief.md](meetings/2026-W22_brief.md)
+- **2026-W22 (5/28 미팅 예정)** — **Reverse Distillation 전 카테고리(15/15) 완결 및 분석 보고.** (5/22 완료) method4 Dinomaly 환경 구축 및 1차 검증(bottle). SimpleNet 구조적 약점 분석(screw/capsule) 및 4-way 비교 프레임워크 초안 설계. → [meetings/2026-W22_brief.md](meetings/2026-W22_brief.md)
 
 ## 빠른 링크
 
