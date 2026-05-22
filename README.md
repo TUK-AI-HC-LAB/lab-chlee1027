@@ -5,6 +5,7 @@
 | 1 | [method1_patchcore](method1_patchcore/source/) | Roth et al., 2022, Towards Total Recall in Industrial Anomaly Detection (CVPR 2022, PatchCore) | 재현 완료 (MVTec AD: 15/15 카테고리) |
 | 2 | [method2_simplenet](method2_simplenet/source/) | Liu et al., 2023, SimpleNet: A Simple Network for Image Anomaly Detection and Localization (CVPR 2023) | 재현 완료 (MVTec AD: 15/15 카테고리) |
 | 3 | [method3_RD](method3_RD/source/) | Deng et al., 2022, Anomaly Detection via Reverse Distillation from One-Class Embedding (CVPR 2022, RD) | 재현 완료 (MVTec AD: 15/15 카테고리) |
+| 4 | [method4_Dinomaly](method4_Dinomaly/source/) | Dinomaly | 환경 구축 중 |
 
 ## 진행 상황 요약
 
@@ -19,6 +20,8 @@
 - [method1 PatchCore — 가이드·결과](method1_patchcore/source/README.md)
 - [method2 SimpleNet — 가이드·결과](method2_simplenet/source/README.md)
 - [method3 RD — 가이드·결과](method3_RD/source/README.md)
+- [method4 Dinomaly — 가이드·결과](method4_Dinomaly/source/README.md)
 - [3-way 비교 (PatchCore·SimpleNet·RD)](method3_RD/markdown/rd_vs_patchcore_simplenet.md)
+- [4-way 비교 (추후 작성 예정)]
 - [WEEKLY_LOG.md](WEEKLY_LOG.md)
 - [meetings/](meetings/)
