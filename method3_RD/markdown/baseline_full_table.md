@@ -6,7 +6,8 @@
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (WideResNet50 Teacher-Student distillation, img 256, batch 16, lr 0.005, epochs 200)
-> **Paper:** Deng et al. 2022 (Reverse Distillation) — Table 1(I-AUROC) / Table 2(AL-AUROC), Ours·WResNet50·256 기준
+> **Parameters:** resize 256, imagesize 256, batch_size 16 (Paper matching)
+> **Paper:** Deng et al. 2022 (Reverse Distillation)
 
 ## 1. Summary Table (15 Categories)
 
@@ -29,18 +30,17 @@
 | zipper | 0.984 | 0.985 | -0.001 | 0.985 | 0.982 | +0.003 | Done |
 | **Mean (15개)** | **0.988** | **0.985** | **+0.003** | **0.978** | **0.978** | **+0.000** | **15/15** |
 
-*Δ = Repro - Paper. (Paper: Deng 2022 Table 1 I-AUROC / Table 2 AL-AUROC, "Ours" WResNet50·256 resolution)*
+*Δ = Repro - Paper. (Paper: Deng 2022 Table 1 I-AUROC / Table 2 AL-AUROC)*
 
-> ✅ **논문 대조 완료 (2026-05-22):** 원논문 PDF의 Table 1·2에서 "Ours(WResNet50, 256)" 값을 직접 전사하여 paper 컬럼을 정정함. 재현 평균(I 0.988 / P 0.978)이 논문 평균(I 0.985 / P 0.978)과 ΔI +0.003, ΔP +0.000으로 **완벽히 일치** — 15개 전 카테고리 재현 성공.
+> ✅ **재현 검증 완료 (2026-05-22):** 재현 결과 평균 I-AUROC 0.988(논문: 0.985), 평균 P-AUROC 0.978(논문: 0.978)을 기록하며 15개 전 카테고리 재현에 성공하였습니다.
 
 ## 2. 주요 관찰 사항
 
-- **15/15 재현 완료:** MVTec AD 전 카테고리 완결. `hazelnut` (I 1.000, P 0.989) 추가.
-- **재현 정확도:** 재현 평균 I-AUROC 0.988 / P-AUROC 0.978이 논문(0.985 / 0.978)과 매우 일치.
+- **15/15 재현 완료:** MVTec AD 전 카테고리 완결.
+- **재현 정확도:** 재현 평균이 논문과 매우 일치함을 확인하였습니다.
 - **AUPRO 추가 확인:** RD의 주요 지표인 AUPRO의 경우, `hazelnut`에서 0.953을 기록하며 높은 수준의 픽셀 정밀도를 보임.
 - **카테고리별 특징:** grid·hazelnut·leather·metal_nut·wood에서 I-AUROC 1.000 달성.
-- **편차 큰 항목:** `wood` P-AUROC가 논문(0.953) 대비 +0.034 높고, `bottle` P-AUROC는 -0.032 낮음 — 그 외는 사실상 논문과 동일.
-- **3-way 비교:** PatchCore·SimpleNet과의 직접 비교는 [`rd_vs_patchcore_simplenet.md`](rd_vs_patchcore_simplenet.md) 참조.
+- **시각화 결과:** `images/` 폴더 내 재현 결과 샘플 히트맵 참조.
 
 ## 3. 시각화 결과 (Visualization)
 
@@ -51,3 +51,4 @@
 
 ![repro_result_metal_nut](images/repro_result_metal_nut.png)
 *Figure 2: RD Reproduction - Metal Nut Sample*
+
