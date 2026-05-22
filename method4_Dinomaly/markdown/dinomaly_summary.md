@@ -8,6 +8,33 @@
 
 DINOv2 사전학습 ViT를 Encoder로, **Dropout 병목 + Linear Attention + Loose Reconstruction**이라는 세 가지 "덜어내는" 설계로 identity mapping을 차단하는 순수 Transformer 기반 복원형 프레임워크. **Multi-class 통합 모델 하나로** MVTec AD I-AUROC 99.6%를 달성하여 기존 class-separated SOTA까지 돌파.
 
+## 아키텍처 개요 (Architecture Overview)
+
+```mermaid
+graph LR
+    subgraph "Encoder (Frozen)"
+        Input[Input Image] --> ViT[DINOv2-Register ViT]
+        ViT --> FeatE[Multi-layer Features]
+    end
+
+    subgraph "The Less Is More Philosophy (Trainable)"
+        FeatE --> Bottleneck["Noisy Bottleneck\n(MLP + Dropout 0.2)"]
+        Bottleneck --> Decoder["Linear Decoder\n(Linear Attention)"]
+        Decoder --> FeatD[Reconstructed Features]
+    end
+
+    subgraph "Objective"
+        FeatE -- Loose Constraint --> Loss{Loose Loss}
+        FeatD -- Loose Constraint --> Loss
+        Loss --> Opt[Backprop to Bottleneck/Decoder]
+    end
+
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Loss fill:#fff4dd,stroke:#d4a017,stroke-width:2px
+    style Bottleneck fill:#e1f5fe,stroke:#01579b
+    style Decoder fill:#e1f5fe,stroke:#01579b
+```
+
 ## 문제 / 동기
 
 - **Cold-start anomaly detection** 동일 — 정상만 있고 비정상은 거의 없는 산업 환경
