@@ -6,10 +6,10 @@ Reverse Distillation (Deng et al. 2022, *Anomaly Detection via Reverse Distillat
 
 MVTec AD **15/15 카테고리** 재현 완료.
 
-| Metric | Repro (Mean, 15개) | Status |
-| :--- | :---: | :---: |
-| **I-AUROC** | **0.988** | ✅ 15/15 |
-| **Full P-AUROC** | **0.978** | ✅ 15/15 |
+| Metric | Repro (Mean) | Paper (Mean) | Status |
+| :--- | :---: | :---: | :---: |
+| **I-AUROC** | **0.988** | 0.985 | ✅ Success |
+| **Full P-AUROC** | **0.978** | 0.978 | ✅ Success |
 
 *RD의 3번째 픽셀 지표는 AUPRO(Per-Region Overlap)이며, 카테고리별 상세는 [baseline_full_table.md](../markdown/baseline_full_table.md) 참조.*
 
