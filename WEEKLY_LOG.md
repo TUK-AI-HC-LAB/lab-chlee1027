@@ -56,7 +56,7 @@
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
 - **SimpleNet ↔ PatchCore 비교 분석** — 15개 카테고리 결과를 나란히 둔 비교표 + 분석 노트 `method2_simplenet/markdown/simplenet_vs_patchcore.md` (특히 pill·metal_nut에서 SimpleNet 우위 분석)
 - **SimpleNet 노트북 → 셸 스크립트화** — `method2_simplenet/source/run_baseline.sh` (CATEGORY 환경변수), 재현 출처 commit/sh/csv 3줄 완성
-- **method3_RD 실험 착수** — upstream(`hqucl/Reverse-Distillation`) 코드 분석 + bottle·toothbrush 우선 baseline 실행
+- **method3_RD 실험 착수** — upstream(`hq-deng/RD4AD`, 공식 구현체) 코드 분석 + bottle·toothbrush 우선 baseline 실행
 
 ---
 

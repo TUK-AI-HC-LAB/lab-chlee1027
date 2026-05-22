@@ -38,8 +38,9 @@ graph LR
 
 ---
 
+## 🔍 집중 분석 및 결과 보고
 
-1. **[baseline_analysis.md](../markdown/baseline_analysis.md):** 12/15 카테고리 재현 분석 (개요/환경/종합 결과/관찰/결론)
+1. **[baseline_analysis.md](../markdown/baseline_analysis.md):** 14/15 카테고리 재현 분석 (개요/환경/종합 결과/관찰/결론)
 2. **[baseline_full_table.md](../markdown/baseline_full_table.md):** 카테고리별 재현 결과표 + 시각화
 3. **[rd_summary.md](../markdown/rd_summary.md):** 논문 요약 + 핵심 구조(Teacher-Student / OCBE / 복원 오차) + PatchCore·SimpleNet과의 차별점
 4. **[rd_vs_patchcore_simplenet.md](../markdown/rd_vs_patchcore_simplenet.md):** PatchCore·SimpleNet·RD 3-way 비교 분석

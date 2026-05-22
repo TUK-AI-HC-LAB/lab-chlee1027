@@ -84,12 +84,12 @@
 - **bottle(픽셀):** RD P 0.955 vs PatchCore 0.985 / SimpleNet 0.980 — 이미지 탐지는 0.996로 높지만 픽셀 위치추정이 두 method 대비 -0.03 낮음.
 
 ### 4.4 method 간 상보성
-- **PatchCore가 약했던 pill·metal_nut:** SimpleNet·RD 모두 metal_nut I-AUROC 1.000 달성. pill은 RD 미완이라 SimpleNet(0.986)이 PatchCore(0.967)를 크게 보완.
+- **PatchCore가 약했던 pill·metal_nut:** metal_nut은 SimpleNet·RD 모두 I-AUROC 1.000 달성. pill은 이미지 탐지에서 SimpleNet(0.986)이 PatchCore(0.967)를 크게 보완하고, 픽셀에서는 RD(0.982)·SimpleNet(0.984)이 PatchCore(0.978)를 앞섬.
 - **세 method의 분업 구도:** 이미지 탐지=SimpleNet, 범용 픽셀 정밀도=PatchCore, 텍스처 픽셀 정밀도=RD. 단일 method가 모든 카테고리를 지배하지 않음.
 
 ## 5. 결론 및 다음
 - 세 접근은 **상보적**이며, 카테고리 특성(객체 vs 텍스처)·평가 축(이미지 vs 픽셀)에 따라 우열이 갈린다.
-- **남은 작업:** RD의 hazelnut·pill 완료 후 15/15 기준으로 평균 재계산. 특히 PatchCore가 가장 약했던 **pill에서 RD 거동**이 핵심 관심.
+- **남은 작업:** RD의 hazelnut 완료 후 15/15 기준으로 평균 재계산.
 - 입력 해상도·학습 설정 차이가 비교에 섞여 있으므로, 동일 입력 크기로 맞춘 통제 실험이 후속 과제.
 
 > 원자료: 세 method의 `baseline_full_table.md` / `source/results/*.csv`

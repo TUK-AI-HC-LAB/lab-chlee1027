@@ -110,7 +110,8 @@ upstream **[hq-deng/RD4AD](https://github.com/hq-deng/RD4AD)** (공식 구현체
 1. ~~upstream 확정~~ → **hq-deng/RD4AD** 확정
 2. ~~baseline 실행~~ → 14/15 완료, hazelnut 잔여
 3. ~~3-way 비교 노트 작성~~ → **완료** ([`rd_vs_patchcore_simplenet.md`](rd_vs_patchcore_simplenet.md))
-4. hazelnut 완료 후 15/15 평균 확정 + `baseline_full_table.md` paper 컬럼 원논문 기준 재전사
+4. ~~paper 컬럼 원논문 기준 검증~~ → **완료** (Table 1·2 직접 전사, ΔI +0.002)
+5. hazelnut 완료 후 15/15 평균 확정
 
 > 실행 가이드: [`../source/README.md`](../source/README.md)
 > 재현 분석: [`baseline_analysis.md`](baseline_analysis.md)
