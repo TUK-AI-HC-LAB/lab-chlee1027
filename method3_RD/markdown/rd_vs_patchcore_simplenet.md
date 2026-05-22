@@ -74,7 +74,7 @@
 
 ### 4.2 RD의 강점 — 텍스처 픽셀 정밀도
 - **wood:** RD P-AUROC **0.987** vs PatchCore 0.951 / SimpleNet 0.940 — **RD가 압도적**(+0.036). encoder-decoder 복원 방식이 나뭇결 같은 텍스처 결함의 픽셀 경계를 더 잘 잡는 것으로 보인다.
-- **screw(P 0.996), leather(P 0.994), grid(P 0.993), toothbrush(P 0.991), hazelnut(P 0.989):** RD가 픽셀 최고 수준. 복원 오차 기반이 미세 구조 위치추정에 유리.
+- **screw(P 0.996), leather(P 0.994), grid(P 0.993), toothbrush(P 0.991), hazelnut(P 0.989):** RD가 픽셀 최고 수준. 특히 `hazelnut`은 I-AUROC 1.000과 P-AUROC 0.989를 동시에 기록하며 텍스처 복원 오차 기반 방식의 강점을 입증함.
 
 ### 4.3 RD의 약점 — transistor·cable·bottle(픽셀)
 - **transistor:** RD I 0.970 / P 0.928 — 세 method 중 양쪽 모두 최저. 부품 위치·배선 변화처럼 "정상 패턴이 다양한" 카테고리에서 복원 모델이 약함.
