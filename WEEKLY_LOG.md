@@ -17,7 +17,7 @@
 - 4-way 비교표(PatchCore/SimpleNet/RD/Dinomaly) 미리 설계
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
-- **RD baseline 확장 실행** — bottle, toothbrush, screw 포함 10개 이상 카테고리 결과 도출 및 `baseline_full_table.md` 업데이트
+- **RD baseline 완결 결과 점검** — 15/15 카테고리 결과 및 `baseline_full_table.md` 정합성 유지
 - **Method 4 (Dinomaly) 셋업** — 환경 구축 및 bottle 카테고리 cross-check 수행
 - **SimpleNet 분석 심화** — screw/capsule 편차에 대한 구조적 가설 검증 (ablation 또는 시각화 분석)
 - **통합 4-way 비교표 초안 작성** — 입력 해상도 및 학습 조건 정규화 반영
