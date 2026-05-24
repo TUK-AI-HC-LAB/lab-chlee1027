@@ -2,9 +2,9 @@ exp_id,category,seed,noise_std,gan_epochs,i_auroc,p_auroc,anomaly_p_auroc,note
 baseline,screw,0,0.015,4,0.975,0.988,0.9xx,Original Baseline (Seed 0)
 exp1,screw,100,0.015,4,0.980,0.993,0.960,Stochasticity check (Seed 100)
 exp2,screw,2026,0.015,4,0.974,0.993,0.964,Stochasticity check (Seed 2026)
-exp10,screw,0,0.015,8,0.976,0.991,0.961,Longer training check (gan_epochs 8)
 exp3,capsule,100,0.015,4,0.980,0.989,0.936,Stochasticity check (Seed 100)
-exp5,bottle,100,0.015,4,1.000,0.981,0.908,Stochasticity check (Seed 100)
-exp7,screw,0,0.010,4,0.987,0.992,0.969,Noise Masking check (noise_std 0.010) - BEST
-exp8,screw,0,0.005,4,0.905,0.947,0.828,Under-noising check (noise_std 0.005) - FAIL
-exp9,screw,0,0.015,2,0.984,0.993,0.964,Overfitting check (gan_epochs 2)
+exp4,bottle,100,0.015,4,1.000,0.981,0.908,Stochasticity check (Seed 100)
+exp5,screw,0,0.010,4,0.987,0.992,0.969,Noise Masking check (noise_std 0.010) - BEST
+exp6,screw,0,0.005,4,0.905,0.947,0.828,Under-noising check (noise_std 0.005) - FAIL
+exp7,screw,0,0.015,2,0.984,0.993,0.964,Overfitting check (gan_epochs 2)
+exp8,screw,0,0.015,8,0.976,0.991,0.961,Longer training check (gan_epochs 8)
