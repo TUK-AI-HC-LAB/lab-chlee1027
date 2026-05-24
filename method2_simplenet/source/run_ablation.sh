@@ -76,9 +76,9 @@ run_experiment() {
 run_experiment "screw"    100  0.015  4  "exp1_screw_seed100"
 run_experiment "screw"    2026 0.015  4  "exp2_screw_seed2026"
 run_experiment "capsule"  100  0.015  4  "exp3_capsule_seed100"
-run_experiment "capsule"  2026 0.015  4  "exp4_capsule_seed2026"
+# run_experiment "capsule"  2026 0.015  4  "exp4_capsule_seed2026"  # GPU 절약을 위해 제외
 run_experiment "bottle"   100  0.015  4  "exp5_bottle_seed100"
-run_experiment "bottle"   2026 0.015  4  "exp6_bottle_seed2026"
+# run_experiment "bottle"   2026 0.015  4  "exp6_bottle_seed2026"  # GPU 절약을 위해 제외
 
 # 7-10) 구조적 가설 검증 - screw 집중 (Noise & Epoch)
 run_experiment "screw"    0    0.010  4  "exp7_screw_noise010"
