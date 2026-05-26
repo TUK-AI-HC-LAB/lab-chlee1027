@@ -1,0 +1,2 @@
+date,category,backbone,img_size,crop_size,batch_size,lr,iterations,i_auroc,i_ap,i_f1,p_auroc,p_ap,p_f1,p_aupro,environment,notes
+2026-05-25,zipper,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9917,0.7888,0.7517,0.9704,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
