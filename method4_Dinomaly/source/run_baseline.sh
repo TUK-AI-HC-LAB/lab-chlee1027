@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # Method 4: Dinomaly 실험 자동화 스크립트
 # 사용법: CATEGORY=bottle MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 
-if [ -z "$CATEGORY" ]; then
+if [ -z "${CATEGORY:-}" ]; then
     echo "❌ [오류] CATEGORY 환경변수가 설정되지 않았습니다. (예: CATEGORY=bottle)"
     exit 1
 fi
 
-if [ -z "$MVTEC_DIR" ]; then
+if [ -z "${MVTEC_DIR:-}" ]; then
     echo "❌ [오류] MVTEC_DIR 환경변수가 설정되지 않았습니다. (예: MVTEC_DIR=/path/to/mvtec)"
     exit 1
 fi
@@ -45,7 +47,7 @@ import re
 path = '$MAIN_SCRIPT'
 with open(path, 'r') as f: content = f.read()
 content = content.replace(\"device = 'cuda:1'\", \"device = 'cuda:0' if torch.cuda.is_available() else 'cpu'\")
-pattern = r\"item_list = \\['carpet'.*?'zipper'\]\"
+pattern = r\"item_list\\s*=\\s*\\[[^\\]]*\\]\"
 content = re.sub(pattern, \"item_list = ['$CATEGORY']\", content, flags=re.DOTALL)
 with open(path, 'w') as f: f.write(content)
 print('✅ $MAIN_SCRIPT 패치 완료 (Category: $CATEGORY)')
