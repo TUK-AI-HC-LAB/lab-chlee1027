@@ -82,4 +82,9 @@ image → ViT Encoder → MLP Bottleneck → ViT Decoder → Anomaly Map (Cosine
 ### 3. 종합 결론
 Dinomaly는 단일 통합 모델(Multi-class)임에도 불구하고 대부분의 카테고리에서 개별 모델(Class-separated)보다 우수한 성능을 보임. 다만, **미세 구조 결함**이 중요한 카테고리에서는 **Noisy Bottleneck**의 강도를 조절하거나 해상도를 높이는 등의 추가 튜닝이 성능 향상의 열쇠가 될 것으로 판단됨.
 
+### 4. MUAD(Multi-class Unified)의 실용적 우위
+- **기존 방식 (M1~M3)**: 카테고리별로 독립된 모델 학습 및 저장이 필요함 (MVTec AD 기준 15개의 모델 파일 발생).
+- **Dinomaly 방식 (M4)**: 단 **하나의 모델(Single Weight)**로 15개 전체 카테고리의 정상 패턴을 동시에 학습하고 추론함. 
+- **의의**: 모델 관리 비용과 메모리 점유율을 1/15로 획득하면서도, 개별 학습 모델보다 높은 평균 성능(0.9962)을 달성하여 실제 산업 현장에서의 배포 효율성이 비약적으로 높음.
+
 > 실행 가이드: [`../source/README.md`](../source/README.md)
