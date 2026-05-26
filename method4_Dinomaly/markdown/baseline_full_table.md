@@ -1,7 +1,7 @@
 # Method 4 (Dinomaly) 재현 결과 리포트
 
 - commit: `6f8e1c0`
-- sh / notebook: `method4_Dinomaly/source/dinomaly.ipynb`
+- sh / notebook: `method4_Dinomaly/source/run_baseline.sh` / `dinomaly_colab.ipynb`
 - csv: `method4_Dinomaly/source/results/` (15/15 완료)
 
 ## 📊 MVTec AD Baseline Results (Reproduction)
@@ -23,7 +23,7 @@
 | **toothbrush** | 1.0000 | 1.0000 | 1.0000 | 0.9890 | 0.5174 | 0.6276 | 0.9517 |
 | **transistor** | 0.9904 | 0.9824 | 0.9639 | 0.9305 | 0.5928 | 0.5761 | 0.7531 |
 | **zipper** | 1.0000 | 1.0000 | 1.0000 | 0.9917 | 0.7888 | 0.7517 | 0.9704 |
-| **Mean** | **0.9962** | **0.9980** | **0.9908** | **0.9832** | **0.6878** | **0.6900** | **0.9465** |
+| **Mean** | **0.9962** | **0.9980** | **0.9908** | **0.9832** | **0.6877** | **0.6900** | **0.9465** |
 
 > ✅ **재현 검증 완료**: 김준아 학생의 베이스라인 수치(Mean I-AUROC 0.9962)를 본인 환경에서 100% 동일하게 재현함.
 >

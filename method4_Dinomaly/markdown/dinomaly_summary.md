@@ -66,6 +66,7 @@ image → ViT Encoder → MLP Bottleneck → ViT Decoder → Anomaly Map (Cosine
 
 - **재현 완결**: MVTec AD 15개 전 카테고리 재현 완료 (**Mean I-AUROC 0.9962**)
 - **수치 일치**: 김준아 학생 베이스라인 수치와 소수점 4자리까지 완벽 일치 확인.
+- **분석 보고**: 4-way 통합 비교 프레임워크 반영 및 카테고리별 편차 분석 완료.
 
 ## 📈 카테고리별 재현 편차 분석 (Category Deviation Analysis)
 
