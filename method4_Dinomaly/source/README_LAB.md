@@ -74,16 +74,19 @@ CATEGORY=bottle MVTEC_DIR=/path/to/mvtec bash run_baseline.sh
 2. 필요 시 수정사항 적용.
 3. 논문 기본 설정(ViT-Base/14, DINOv2-R, resize 448 / crop 392, 10,000 iterations)으로 학습+평가.
 
-> 1차 탐색은 김준아 학생의 fork 기반 노트북으로 진행 예정.
+> 1차 탐색 및 재현은 김준아 학생의 fork 기반 패치 로직을 적용한 통합 노트북(`dinomaly.ipynb`)으로 완결.
 
 ## 🛠 수정 내역 (upstream 대비)
 
-> 수정 내역은 실험 진행 후 기재 예정.
+1. **`utils.py` 패치**: 최신 Pandas(2.0+) 호환성을 위해 `df.append()`를 `pd.concat()`으로 수정.
+2. **CUDA 디바이스 자동화**: 단일 GPU 환경(Colab 등) 호환을 위해 `cuda:1` 하드코딩을 자동 감지 로직으로 변경.
+3. **카테고리별 실행 옵션**: 특정 카테고리만 학습/평가할 수 있도록 `--category` 인자 및 필터링 로직 추가.
+4. **시각화 자동화**: 학습 완료 후 `visualize()` 함수를 호출하여 `./visualize` 폴더에 결과를 자동 저장하도록 개선.
 
 ## 📂 폴더 구조 및 파일 가이드
-- `source/README.md`: 실행 가이드 및 재현 결과 (본 문서).
-- `source/run_baseline.sh`: 카테고리별 실험 자동화 쉘 스크립트 (작성 예정).
-- `source/requirements.txt`: Colab T4 환경 패키지 스냅샷 (작성 예정).
+- `source/dinomaly.ipynb`: 전체 프로세스(클론, 패치, 학습, 시각화) 통합 실행 노트북.
+- `source/run_baseline.sh`: 카테고리별 실험 자동화를 위한 셸 스크립트.
+- `source/requirements.txt`: 실행 환경 패키지 스냅샷 (사용자 제공 예정).
 - `source/results/`: 재현 결과 CSV.
 - `markdown/`: 논문 요약, 재현 분석, 결과 테이블, 시각화.
 
