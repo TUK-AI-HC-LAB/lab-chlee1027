@@ -19,7 +19,7 @@
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
 - **RD baseline 완결 결과 점검** — 15/15 카테고리 결과 및 `baseline_full_table.md` 정합성 유지
-- **Method 4 (Dinomaly) 분석 보고** — 15/15 재현 수치 및 시각화 결과 정리
+- **Method 4 (Dinomaly) 분석 보고** — 15/15 재현 수치 정리 및 공학적 해석 완료
 - **SimpleNet 분석 심화** — screw/capsule 편차에 대한 구조적 가설 검증 (ablation 또는 시각화 분석)
 - **통합 4-way 비교표 작성** — 입력 해상도 및 학습 조건 정규화 반영 완료
 
