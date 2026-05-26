@@ -1,0 +1,16 @@
+date,category,backbone,img_size,crop_size,batch_size,lr,iterations,i_auroc,i_ap,i_f1,p_auroc,p_ap,p_f1,p_aupro,environment,notes
+2026-05-25,carpet,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9988,0.9996,0.9889,0.9934,0.6902,0.7176,0.9753,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,grid,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9975,0.9991,0.9912,0.9940,0.5616,0.5840,0.9713,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,leather,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9934,0.5198,0.5514,0.9778,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,tile,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9809,0.7828,0.7576,0.9056,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,wood,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9991,0.9997,0.9917,0.9759,0.7312,0.6878,0.9365,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,bottle,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9913,0.8823,0.8401,0.9668,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,cable,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9834,0.6788,0.7014,0.9392,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,capsule,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9793,0.9954,0.9818,0.9868,0.6063,0.6046,0.9742,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,hazelnut,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9943,0.8172,0.7659,0.9706,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,metal_nut,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9686,0.7879,0.8670,0.9466,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,pill,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9924,0.9987,0.9825,0.9783,0.7565,0.7133,0.9746,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,screw,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9850,0.9951,0.9627,0.9964,0.6024,0.6035,0.9833,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,toothbrush,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9890,0.5174,0.6276,0.9517,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,transistor,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,0.9904,0.9824,0.9639,0.9305,0.5928,0.5761,0.7531,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
+2026-05-25,zipper,DINOv2 (ViT-Base/14),448,392,16,2e-3,10000,1.0000,1.0000,1.0000,0.9917,0.7888,0.7517,0.9704,Colab T4 / guojiajeremy Dinomaly,baseline reproduction
