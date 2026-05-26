@@ -9,6 +9,7 @@
 - [x] **method3_RD 프로젝트 착수 및 환경 셋업** — requirements.txt 스냅샷 반영 완료
 - [x] **RD baseline 본격 실행 (14/15)** — hazelnut 제외 전 카테고리 완료, 평균 I-AUROC 0.987 / P-AUROC 0.978
 - [x] **RD baseline 완결 (15/15)** — hazelnut 추가 완료 (5/22), 최종 평균 I-AUROC 0.988 / P-AUROC 0.978
+- [x] **Method 4 (Dinomaly) 셋업 및 완결** — 전 카테고리(15/15) 재현 완료, 평균 I-AUROC 0.9962 기록
 
 ### 이전 미팅 결정 사항 (5/21)
 - RD baseline 본격 실행 (bottle, toothbrush, screw 우선)
@@ -18,9 +19,9 @@
 
 ### 다음 미팅까지의 계획 (측정 가능한 단위로)
 - **RD baseline 완결 결과 점검** — 15/15 카테고리 결과 및 `baseline_full_table.md` 정합성 유지
-- **Method 4 (Dinomaly) 셋업** — 환경 구축 및 bottle 카테고리 cross-check 수행
+- **Method 4 (Dinomaly) 분석 보고** — 15/15 재현 수치 및 시각화 결과 정리
 - **SimpleNet 분석 심화** — screw/capsule 편차에 대한 구조적 가설 검증 (ablation 또는 시각화 분석)
-- **통합 4-way 비교표 초안 작성** — 입력 해상도 및 학습 조건 정규화 반영
+- **통합 4-way 비교표 작성** — 입력 해상도 및 학습 조건 정규화 반영 완료
 
 ## 2026-W21 (5/15 ~ 5/21, 5/21 미팅)
 - 미팅 자료: [meetings/2026-W21_brief.md](meetings/2026-W21_brief.md)
