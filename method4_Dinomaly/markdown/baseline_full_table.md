@@ -1,6 +1,6 @@
 # Method 4 (Dinomaly) 재현 결과 리포트
 
-- commit: (4-way 통합 시점 기재 예정)
+- commit: `6f8e1c0`
 - sh / notebook: `method4_Dinomaly/source/dinomaly.ipynb`
 - csv: `method4_Dinomaly/source/results/` (15/15 완료)
 
