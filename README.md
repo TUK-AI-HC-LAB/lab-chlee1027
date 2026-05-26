@@ -22,6 +22,6 @@
 - [method3 RD — 가이드·결과](method3_RD/source/README.md)
 - [method4 Dinomaly — 가이드·결과](method4_Dinomaly/source/README.md)
 - [3-way 비교 (PatchCore·SimpleNet·RD)](method3_RD/markdown/rd_vs_patchcore_simplenet.md)
-- [4-way 비교 (추후 작성 예정)]
+- [4-way 통합 비교 (PatchCore·SimpleNet·RD·Dinomaly)](method4_Dinomaly/markdown/4-way_comparison_framework.md)
 - [WEEKLY_LOG.md](WEEKLY_LOG.md)
 - [meetings/](meetings/)
