@@ -14,7 +14,7 @@
 ### 1.2 관련 연구 대비 차별성
 | 기존 연구 | 주요 특징 | 본 제안 방식의 차별점 (Contribution) |
 | :--- | :--- | :--- |
-| **GCAD / PNI** | global context branch 또는 절대 좌표 모델링 | 절대 좌표 의존성 탈피 및 **M4의 Attention 기반 관계 특징** 활용 |
+| **PNI** (ICCV '23) | 패치의 절대 좌표 정보를 MLP로 학습 | 절대 좌표 의존성 탈피 및 **M4의 Attention 기반 관계 특징** 활용 |
 | **GraphCore** (ICLR '23) | Rotation-invariant feature representation 중심 | **Logical anomaly** 탐지를 위한 relational context reasoning에 집중 |
 
 ### 1.3 기대 효과 및 한계
@@ -75,7 +75,6 @@
 
 ## References
 - PatchCore (CVPR 2022)
-- GCAD (IJCV 2022)
 - PNI (ICCV 2023)
 - EfficientAD (WACV 2024)
 - CFA (CVPR 2022)
