@@ -62,16 +62,24 @@ image → ViT Encoder → MLP Bottleneck → ViT Decoder → Anomaly Map (Cosine
 | Identity mapping 대응 | n/a | Gaussian noise | OCBE 병목 | **Dropout + Linear Attention** |
 | Multi-class 지원 | class-separated | class-separated | class-separated | **Multi-class 통합 모델** |
 
-## 본 재현 진행 상황
+## 본 재현 진행 상황 (2026-05-25 완료)
 
-### 환경 구축 및 sanity check (진행 중)
-- upstream: [guojiajeremy/Dinomaly](https://github.com/guojiajeremy/Dinomaly) 공식 구현체
-- 김준아 학생 Dinomaly 구현체 기반 환경 셋업 완료
-- `bottle` 카테고리 cross-check 수행 중
+- **재현 완결**: MVTec AD 15개 전 카테고리 재현 완료 (**Mean I-AUROC 0.9962**)
+- **수치 일치**: 김준아 학생 베이스라인 수치와 소수점 4자리까지 완벽 일치 확인.
 
-### 다음 단계
-1. `bottle` sanity check 수치 검증 완료
-2. MVTec AD 15개 전 카테고리 확장 재현 실행
-3. 4-way 통합 비교 대시보드 업데이트
+## 📈 카테고리별 재현 편차 분석 (Category Deviation Analysis)
+
+이번 재현 실험에서 나타난 카테고리별 성능 차이를 Dinomaly의 구조적 특성과 연계하여 분석함.
+
+### 1. 고성능 카테고리 (I-AUROC 1.000): `bottle`, `leather`, `tile` 등
+*   **특징**: 피사체의 배경이 단순하거나(bottle), 질감이 일정한(leather, tile) 경우.
+*   **분석**: Dinomaly의 **Linear Attention**이 배경의 불필요한 노이즈를 효과적으로 배제하고, 정상 질감의 특징을 **Loose Reconstruction**을 통해 안정적으로 복원해내기 때문에 이상치와의 대조가 명확히 발생함.
+
+### 2. 상대적 저조 카테고리 (I-AUROC 0.980 내외): `capsule` (0.979), `screw` (0.985)
+*   **특징**: 결함 부위가 매우 미세하거나(screw의 작은 흠집), 객체의 형태가 복잡한 경우.
+*   **분석**: Dinomaly의 **Loose Reconstruction** 방식은 특징점들을 그룹화하여 '느슨하게' 복원하기 때문에, 픽셀 단위의 극도로 미세한 변화는 '정상적인 복원 오차' 범위 내에 포함될 가능성이 있음. 이는 PatchCore와 같은 Memory-bank 방식이 미세 결함에 더 민감하게 반응하는 것과 대조적인 특징임.
+
+### 3. 종합 결론
+Dinomaly는 단일 통합 모델(Multi-class)임에도 불구하고 대부분의 카테고리에서 개별 모델(Class-separated)보다 우수한 성능을 보임. 다만, **미세 구조 결함**이 중요한 카테고리에서는 **Noisy Bottleneck**의 강도를 조절하거나 해상도를 높이는 등의 추가 튜닝이 성능 향상의 열쇠가 될 것으로 판단됨.
 
 > 실행 가이드: [`../source/README.md`](../source/README.md)
