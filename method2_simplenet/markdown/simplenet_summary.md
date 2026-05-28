@@ -1,6 +1,17 @@
 # Liu et al. 2023 — SimpleNet: A Simple Network for Image Anomaly Detection and Localization
 
-> Zhikang Liu, Yiming Zhou, Yuansheng Xu, Zilei Wang. CVPR 2023.
+## Paper Metadata
+
+| 항목 | 내용 |
+|---|---|
+| 제목 | SimpleNet: A Simple Network for Image Anomaly Detection and Localization |
+| 저자 | Zhikang Liu, Yiming Zhou, Yuansheng Xu, Zilei Wang |
+| 학회/저널 | CVPR |
+| 연도 | 2023 |
+| 논문 링크 | [CVPR 2023 Open Access](https://openaccess.thecvf.com/content/CVPR2023/html/Liu_SimpleNet_A_Simple_Network_for_Image_Anomaly_Detection_and_CVPR_2023_paper.html) |
+| GitHub / 공식 코드 | [DonaldRR/SimpleNet](https://github.com/DonaldRR/SimpleNet) |
+| 조사 이유 | 메모리 뱅크가 없는 학습 기반 이상 탐지 모델로서, 가상 이상치 합성 및 판별기 구조 분석과 재현을 위함 |
+
 > 원문 PDF: `method2_simplenet/paper/SimpleNet.pdf`
 
 ## 한 줄 요약

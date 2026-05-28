@@ -1,6 +1,17 @@
 # Deng et al. 2022 — Anomaly Detection via Reverse Distillation from One-Class Embedding (RD)
 
-> Hanqiu Deng, Xingyu Li. CVPR 2022.
+## Paper Metadata
+
+| 항목 | 내용 |
+|---|---|
+| 제목 | Anomaly Detection via Reverse Distillation from One-Class Embedding |
+| 저자 | Hanqiu Deng, Xingyu Li |
+| 학회/저널 | CVPR |
+| 연도 | 2022 |
+| 논문 링크 | [CVPR 2022 Open Access](https://openaccess.thecvf.com/content/CVPR2022/html/Deng_Anomaly_Detection_via_Reverse_Distillation_From_One-Class_Embedding_CVPR_2022_paper.html) |
+| GitHub / 공식 코드 | [hq-deng/RD4AD](https://github.com/hq-deng/RD4AD) |
+| 조사 이유 | 지식 증류 기반 이상 탐지의 한계를 비대칭 인코더-디코더 구조 및 OCBE 병목을 통해 극복한 복원 기반 모델 분석 및 재현을 위함 |
+
 > 원문 PDF: `method3_RD/paper/Reverse_Distillation_CVPR2022.pdf`
 
 ## 한 줄 요약

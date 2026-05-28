@@ -1,6 +1,17 @@
 # Roth et al. 2022 — Towards Total Recall in Industrial Anomaly Detection (PatchCore)
 
-> Karsten Roth, Latha Pemula, Joaquin Zepeda, Bernhard Schölkopf, Thomas Brox, Peter Gehler. CVPR 2022.
+## Paper Metadata
+
+| 항목 | 내용 |
+|---|---|
+| 제목 | Towards Total Recall in Industrial Anomaly Detection |
+| 저자 | Karsten Roth, Latha Pemula, Joaquin Zepeda, Bernhard Schölkopf, Thomas Brox, Peter Gehler |
+| 학회/저널 | CVPR |
+| 연도 | 2022 |
+| 논문 링크 | [CVPR 2022 Open Access](https://openaccess.thecvf.com/content/CVPR2022/html/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.html) |
+| GitHub / 공식 코드 | [amazon-science/patchcore-inspection](https://github.com/amazon-science/patchcore-inspection) |
+| 조사 이유 | 산업 제조 결함 탐지를 위한 대표적인 메모리 뱅크 및 coreset 샘플링 기반 baseline 알고리즘 분석 및 재현을 위함 |
+
 > 원문 PDF: `method1_patchcore/paper/roth2022.pdf`
 
 ## 한 줄 요약

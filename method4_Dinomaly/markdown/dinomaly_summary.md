@@ -1,6 +1,17 @@
 # Guo et al. 2025 — Dinomaly: The Less Is More Philosophy in Multi-Class Unsupervised Anomaly Detection
 
-> Jia Guo, Shuai Lu, Weihang Zhang, Fang Chen, Huiqi Li, Hongen Liao. CVPR 2025.
+## Paper Metadata
+
+| 항목 | 내용 |
+|---|---|
+| 제목 | Dinomaly: The Less Is More Philosophy in Multi-Class Unsupervised Anomaly Detection |
+| 저자 | Jia Guo, Shuai Lu, Weihang Zhang, Fang Chen, Huiqi Li, Hongen Liao |
+| 학회/저널 | CVPR |
+| 연도 | 2025 |
+| 논문 링크 | [CVPR 2025 Open Access](https://openaccess.thecvf.com/content/CVPR2025/html/Guo_Dinomaly_The_Less_is_More_Philosophy_in_Multi-Class_Unsupervised_CVPR_2025_paper.html) |
+| GitHub / 공식 코드 | [guojiajeremy/Dinomaly](https://github.com/guojiajeremy/Dinomaly) |
+| 조사 이유 | 단일 통합 가중치 모델로 다중 클래스 이상 탐지 성능을 획득하는 Multi-class Unified AD 모델 분석 및 재현을 위함 |
+
 > 원문 PDF: `method4_Dinomaly/paper/Dinomaly_CVPR2025.pdf`
 > arXiv: [2405.14325](https://arxiv.org/abs/2405.14325)
 
