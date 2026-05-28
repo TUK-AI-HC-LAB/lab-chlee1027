@@ -1,5 +1,25 @@
 # Weekly Log
 
+## 2026-W23 (5/29 ~ 6/4, 6/4 미팅)
+- 미팅 자료: [meetings/2026-W23_brief.md](meetings/2026-W23_brief.md)
+
+### 전주 계획 달성도
+- [x] **RD baseline 완결 결과 점검** — 15/15 카테고리 결과 및 `baseline_full_table.md` 정합성 유지 (`method3_RD/markdown/baseline_full_table.md`)
+- [x] **Method 4 (Dinomaly) 분석 보고** — 15/15 재현 수치 정리 및 공학적 해석 완료 (`method4_Dinomaly/markdown/baseline_analysis.md`)
+- [x] **SimpleNet 분석 심화** — screw/capsule 편차에 대한 구조적 가설 검증 완료 (`method2_simplenet/markdown/repro_failure_analysis.md`)
+- [x] **통합 4-way 비교표 작성** — 입력 해상도 및 학습 조건 정규화 반영 완료 (`method4_Dinomaly/markdown/4-way_comparison_framework.md`)
+
+### 이전 미팅 결정 사항 (5/28)
+- README에 업데이트된 정보(문제 정의 방법 등) 확인 및 구조 정렬
+- PatchCore baseline에서 `feature extraction / memory bank build / kNN search / post-processing`별 inference time과 peak memory를 1~2개 카테고리에서 측정하고 CSV로 남기기
+- 병목이 memory bank 또는 kNN search로 확인되면 `IndexFlatL2` 기준으로 FAISS `IVF/HNSW/PQ` 중 2개를 비교해 I-AUROC, P-AUROC, latency, index memory trade-off 표 만들기
+
+### 다음 미팅까지의 계획 (측정 가능한 단위로)
+- **PatchCore 구성 요소별 프로파일링 완료** — 1~2개 카테고리에서 Latency와 Peak Memory 측정 완료 및 `method1_patchcore/source/results/profiling_baseline.csv` 저장
+- **FAISS 고속 인덱스 벤치마크 수행** — IVF/HNSW/PQ 중 2종 이상을 적용하여 IndexFlatL2와의 트레이드오프 비교 표(`method1_patchcore/markdown/faiss_index_benchmark.md`) 완성
+
+---
+
 ## 2026-W22 (5/22 ~ 5/28, 5/28 미팅)
 - 미팅 자료: [meetings/2026-W22_brief.md](meetings/2026-W22_brief.md)
 
