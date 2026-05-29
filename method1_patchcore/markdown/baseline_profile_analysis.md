@@ -1,7 +1,3 @@
-commit: 5ad8142
-sh / notebook: method1_patchcore/source/profile_colab.ipynb
-csv: method1_patchcore/source/results/baseline_profile_results.csv (15/15 완료)
-
 # PatchCore Baseline 연산 단계별 프로파일링 분석 보고서
 
 본 보고서는 PatchCore baseline 모델의 연산 단계별 소요 시간(Inference Time)과 메모리(Peak Memory)를 정량적으로 측정하여 병목 지점을 진단한 결과를 정리합니다.
@@ -41,7 +37,7 @@ MVTec AD 데이터셋 전체 15개 카테고리(`bottle`, `metal_nut`, `cable`, 
 *   **Memory Bank Build (Coreset Subsampling & Indexing)**:
     *   `toothbrush`: 2.29 s | 223.84 MB, `bottle`: 22.62 s | 755.08 MB, `transistor`: 24.34 s | 770.58 MB, `metal_nut`: 25.07 s | 794.51 MB, `capsule`: 25.22 s | 790.97 MB, `cable`: 26.38 s | 808.40 MB, `tile`: 27.04 s | 829.38 MB, `zipper`: 31.12 s | 866.06 MB, `leather`: 31.58 s | 882.99 MB, `wood`: 31.76 s | 889.91 MB, `grid`: 36.22 s | 951.50 MB, `pill`: 37.19 s | 961.58 MB, `carpet`: 41.49 s | 1008.96 MB, `screw`: 52.23 s | 1152.09 MB, `hazelnut`: 79.04 s | 1405.80 MB
     *   정상 이미지에서 추출된 수십만 개의 패치 특징을 Greedy Coreset 알고리즘을 통해 10% 수준으로 Subsampling하는 연산 부하가 큽니다.
-    *   학습 데이터셋 규모가 큰 **`hazelnut` (1.4 GB / 79.04 s), `screw` (1.15 GB / 52.23 s), `carpet` (1.0 GB / 41.49 s)** 카테고리에서 극단적인 메모리 스파이크와 연산 시간 지연을 초래하여, 학습 단계 부하의 대용량화 병목을 적나라하게 보여줍니다.
+    *   학습 데이터셋 규모가 280장 이상인 **`hazelnut` (1.4 GB / 79.04 s), `screw` (1.15 GB / 52.23 s), `carpet` (1.0 GB / 41.49 s)** 카테고리에서 극단적인 메모리 스파이크와 연산 시간 지연을 초래하여, 학습 단계 부하의 대용량화 병목을 적나라하게 보여줍니다.
 
 ### 2) Inference Phase (테스트 추론 단계)
 *   **Feature Extraction (Test)**:
