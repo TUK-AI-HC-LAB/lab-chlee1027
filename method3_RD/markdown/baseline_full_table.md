@@ -1,8 +1,8 @@
 # Reverse Distillation (RD) Baseline Reproduction Results (MVTec AD)
 
 - commit: `4c72859`
-- sh / notebook: `method3_RD/source/run_baseline.sh` / `rd_colab.ipynb`
-- csv: `method3_RD/source/results/ (15/15 완료: bottle, cable, capsule, carpet, grid, hazelnut, leather, metal_nut, pill, screw, tile, toothbrush, transistor, wood, zipper)`
+- sh / notebook: `method3_RD/source/run_baseline.sh` / `method3_RD/source/rd_colab.ipynb`
+- csv: `method3_RD/source/results/ (15/15 완료: baseline_{category}.csv)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** RD (WideResNet50 Teacher-Student distillation, img 256, batch 16, lr 0.005, epochs 200)
