@@ -1,2 +1,11 @@
 date,category,backbone,layers,coreset_pct,patchsize,seed,instance_auroc,full_pixel_auroc,anomaly_pixel_auroc,paper_instance_auroc,paper_pixel_auroc,environment,notes
 2026-05-10,pill,wideresnet50,layer2+layer3,0.10,3,0,0.967,0.978,0.976,0.978,0.985,Colab T4 / torch 2.10.0+cu128 / faiss-cpu 1.13.2,baseline reproduction (PatchCore-10%)
+2026-05-10,pill,wideresnet50,layer2+layer3,0.01,3,0,0.980,0.976,0.974,0.978,0.985,Colab T4,Coreset Study (coreset_pct=0.01): Best performance (sampling paradox)
+2026-05-10,pill,wideresnet50,layer2+layer3,0.25,3,0,0.967,0.976,0.974,0.978,0.985,Colab T4,Coreset Study (coreset_pct=0.25): Same as baseline
+2026-05-10,pill,wideresnet50,layer2+layer3,0.99,3,0,0.963,0.971,0.969,0.978,0.985,Colab T4,Coreset Study (coreset_pct=0.99): Slight decline
+2026-05-10,pill,wideresnet50,layer2+layer3,0.10,3,1,0.960,0.979,0.977,0.978,0.985,Colab T4,Seed Study (seed=1): Seed sensitivity observed
+2026-05-10,pill,wideresnet50,layer2+layer3,0.10,3,2,0.963,0.978,0.976,0.978,0.985,Colab T4,Seed Study (seed=2): Seed sensitivity observed
+2026-05-10,pill,wideresnet50,layer1+2+3,0.10,3,0,0.956,0.981,0.979,0.978,0.985,Colab T4,Backbone Features (layer1+2+3): I-AUROC dropped; P-AUROC improved
+2026-05-10,pill,wideresnet50,layer2,0.10,3,0,0.917,0.969,0.967,0.978,0.985,Colab T4,Backbone Features (layer2 only): Significant drop; Layer 3 is essential
+2026-05-10,pill,wideresnet50,layer2+layer3,0.10,2,0,0.968,0.979,0.977,0.978,0.985,Colab T4,Patch Parameters (patchsize=2): Marginal improvement in all metrics
+2026-05-10,pill,wideresnet50,layer2+layer3,0.10,3,0,0.968,0.979,0.977,0.978,0.985,Colab T4,Anomaly Scorer (nn_count=5): Slight stability improvement
