@@ -1,8 +1,8 @@
 # SimpleNet Baseline Reproduction Results (MVTec AD)
 
 - commit: `2cd1e4a`
-- sh / notebook: `method2_simplenet/source/run_baseline.sh` / `simplenet_colab.ipynb`
-- csv: `method2_simplenet/source/results/ (15/15 완료: bottle, cable, capsule, carpet, grid, hazelnut, leather, metal_nut, pill, screw, tile, toothbrush, transistor, wood, zipper)`
+- sh / notebook: `method2_simplenet/source/run_baseline.sh` / `method2_simplenet/source/simplenet_colab.ipynb`
+- csv: `method2_simplenet/source/results/ (15/15 완료: baseline_{category}.csv)`
 
 > **Environment:** Colab T4 / Python 3.12 / torch 2.x
 > **Settings:** SimpleNet (WideResNet50, layers 2+3, patchsize 3, meta_epochs 40, gan_epochs 4)

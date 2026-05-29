@@ -1,8 +1,8 @@
 # Method 4 (Dinomaly) 재현 결과 리포트
 
 - commit: `6f8e1c0`
-- sh / notebook: `method4_Dinomaly/source/run_baseline.sh` / `dinomaly_colab.ipynb`
-- csv: `method4_Dinomaly/source/results/` (15/15 완료)
+- sh / notebook: `method4_Dinomaly/source/run_baseline.sh` / `method4_Dinomaly/source/dinomaly_colab.ipynb`
+- csv: `method4_Dinomaly/source/results/ (15/15 완료: baseline_{category}.csv)`
 
 ## 📊 MVTec AD Baseline Results (Reproduction)
 
