@@ -1,6 +1,6 @@
-commit: [Dynamic Commit from Colab Run]
+commit: 5ad8142
 sh / notebook: method1_patchcore/source/profile_colab.ipynb
-csv: method1_patchcore/source/results/baseline_profile_results.csv (15/15 Complete Profile Completed)
+csv: method1_patchcore/source/results/baseline_profile_results.csv (15/15 완료)
 
 # PatchCore Baseline 연산 단계별 프로파일링 분석 보고서
 
