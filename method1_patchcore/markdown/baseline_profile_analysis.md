@@ -1,32 +1,11 @@
 # PatchCore Baseline 연산 단계별 프로파일링 분석 보고서
 
+> 프로파일링 실행: 2026-05-29, Colab T4 GPU
+> 상세 결과 테이블: [baseline_profile_full_table.md](file:///c:/Users/%EC%B1%84%ED%98%84/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/lab/method1_patchcore/markdown/baseline_profile_full_table.md)
+> 원시 측정 CSV: [baseline_profile_results.csv](file:///c:/Users/%EC%B1%84%ED%98%84/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/lab/method1_patchcore/source/results/baseline_profile_results.csv)
+
+## 1. 개요 및 목적
 본 보고서는 PatchCore baseline 모델의 연산 단계별 소요 시간(Inference Time)과 메모리(Peak Memory)를 정량적으로 측정하여 병목 지점을 진단한 결과를 정리합니다.
-
----
-
-## 1. 수집 결과 요약 테이블 (Profiling Full Table)
-
-MVTec AD 데이터셋 전체 15개 카테고리(`bottle`, `metal_nut`, `cable`, `wood`, `transistor`, `leather`, `toothbrush`, `grid`, `screw`, `hazelnut`, `capsule`, `tile`, `pill`, `carpet`, `zipper`)를 대상으로 프로파일링을 수행하였습니다.
-
-| 카테고리 | Train 이미지수 | Test 이미지수 | I-AUROC | P-AUROC | kNN 추론 시간 비율 | 이미지당 kNN Latency | Memory Bank Build Peak Memory |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **hazelnut** | 391장 | 110장 | 100.0% | 98.7% | **94.7% (95.50s)** | **868.22 ms** | **1405.80 MB** |
-| **screw** | 320장 | 160장 | 98.8% | 99.5% | **93.4% (110.98s)** | **693.61 ms** | **1152.09 MB** |
-| **carpet** | 280장 | 117장 | 98.6% | 99.1% | **92.6% (73.25s)** | **626.06 ms** | **1008.96 MB** |
-| **pill** | 267장 | 167장 | 96.7% | 97.8% | **92.5% (100.17s)** | **599.81 ms** | **961.58 MB** |
-| **zipper** | 240장 | 151장 | 99.5% | 98.9% | **92.3% (90.29s)** | **597.95 ms** | **866.06 MB** |
-| **grid** | 264장 | 78장 | 97.9% | 98.8% | **92.1% (43.60s)** | **558.96 ms** | **951.50 MB** |
-| **wood** | 247장 | 79장 | 99.1% | 95.1% | **91.9% (43.38s)** | **549.07 ms** | **889.91 MB** |
-| **leather** | 245장 | 124장 | 100.0% | 99.3% | **91.6% (67.35s)** | **543.11 ms** | **882.99 MB** |
-| **tile** | 230장 | 117장 | 99.5% | 95.7% | **91.2% (59.52s)** | **508.70 ms** | **829.38 MB** |
-| **cable** | 224장 | 150장 | 99.7% | 98.4% | **91.0% (76.84s)** | **512.28 ms** | **808.40 MB** |
-| **capsule** | 219장 | 132장 | 97.9% | 99.0% | **90.9% (62.97s)** | **477.06 ms** | **790.97 MB** |
-| **metal_nut** | 220장 | 115장 | 99.9% | 98.3% | **90.7% (54.56s)** | **474.40 ms** | **794.51 MB** |
-| **transistor** | 213장 | 100장 | 99.9% | 96.1% | **90.6% (47.37s)** | **473.68 ms** | **770.58 MB** |
-| **bottle** | 209장 | 83장 | 100.0% | 98.5% | **89.9% (38.44s)** | **463.12 ms** | **755.08 MB** |
-| **toothbrush** | 60장 | 42장 | 100.0% | 98.6% | **75.1% (6.14s)** | **146.20 ms** | **223.84 MB** |
-
----
 
 ## 2. 연산 단계별 세부 분석 지표
 
